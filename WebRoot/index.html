@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>particles.js</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- LINES -->
+  <link rel="stylesheet" media="screen" href="libs/lines/css/style.css">
+  
+  <link rel="stylesheet" type="text/css" href="libs/snow/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="libs/snow/css/htmleaf-demo.css">
+  <link rel="stylesheet" href="libs/snow/css/jquery.fallingsnow.css">
+  <link rel="stylesheet" href="libs/snow/css/snow-globe.css">
+</head>
+<body>
+
+<!-- count particles -->
+<div class="count-particles">
+  <span class="js-count-particles">--</span> particles
+</div>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			<h1></h1>
+			<div class="htmleaf-demo center">
+			</div>
+		</header>
+		<section>
+			<div class="globe-wrap">
+				<div class="globe"></div>
+				<div id="snowman"></div>
+				<div id="snow"></div>
+			</div>
+		</section>
+	</div>
+	<!-- LINES -->
+	<div id="particles-js"></div>
+	<script src="libs/lines/js/particles.js"></script>
+	<script src="libs/lines/js/app.js"></script>
+	<script src="libs/lines/js/lib/stats.js"></script>
+
+	<script src="libs/snow/js/jquery-1.11.0.min.js"></script>
+	<script src="libs/snow/js/jquery.fallingsnow.min.js"></script>
+	<script>
+		$( "#snow" ).fallingSnow();		
+	</script>
+</body>
+</html>
