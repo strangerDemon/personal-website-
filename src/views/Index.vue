@@ -1,16 +1,22 @@
 <template>
   <div class="index">
     <particles></particles>
+    <main-content></main-content>
+    <router></router>
   </div>
 </template>
 
 <script>
   import particles from '../components/particles/particles'
+  import mainContent from './MainContent'
+  import router from './Router'
   export default {
     name: 'index',
     directives: {},
     components: {
-      particles
+      particles,
+      mainContent,
+      router
     },
     data() {
       return {}

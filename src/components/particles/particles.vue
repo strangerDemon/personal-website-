@@ -7,25 +7,24 @@
     directives: {},
     components: {},
     data() {
-      return {
-      }
+      return {}
     },
     props: {},
     computed: {},
     watch: {},
     methods: {
-      init(){
+      init() {
         particlesJS('particles-js', {
           "particles": {
             "number": {
-              "value": 80,
+              "value": 80, // 20,//80
               "density": {
                 "enable": true,
                 "value_area": 800
               }
             },
             "color": {
-              "value": "#ffffff"
+              "value": "1F2D3D", //"#F0E68C"//ffffff
             },
             "shape": {
               "type": "circle",
@@ -53,19 +52,19 @@
               }
             },
             "size": {
-              "value": 5,
+              "value": 3, //60,//5
               "random": true,
               "anim": {
                 "enable": false,
-                "speed": 40,
-                "size_min": 0.1,
+                "speed": 100, //40
+                "size_min": 10, //0.1
                 "sync": false
               }
             },
             "line_linked": {
-              "enable": true,
+              "enable": true, //false,//true
               "distance": 150,
-              "color": "#ffffff",
+              "color": "#1F2D3D",
               "opacity": 0.4,
               "width": 1
             },
@@ -87,18 +86,18 @@
             "detect_on": "canvas",
             "events": {
               "onhover": {
-                "enable": true,
-                "mode": "repulse"
+                "enable": true, //false,//true
+                "mode": "grab", //"repulse"
               },
               "onclick": {
-                "enable": true,
-                "mode": "push"
+                "enable": true, //false,//true
+                "mode": "repulse", //"push"
               },
               "resize": true
             },
             "modes": {
               "grab": {
-                "distance": 400,
+                "distance": 150, //400,
                 "line_linked": {
                   "opacity": 1
                 }
@@ -378,7 +377,7 @@
   #particles-js {
     width: 100%;
     height: 100%;
-    background-color: #b61924;
+    background-color: #D3DCE6;
     background-image: url('');
     background-size: cover;
     background-position: 50% 50%;
