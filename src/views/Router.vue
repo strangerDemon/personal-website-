@@ -1,17 +1,8 @@
 <template>
   <div class="router">
     <div id='ss_menu'>
-      <div>
-        <i class="el-icon-picture"></i>
-      </div>
-      <div>
-        <i class="fa fa-weibo"></i>
-      </div>
-      <div>
-        <i class="fa fa-weixin"></i>
-      </div>
-      <div>
-        <i class="fa fa-renren"></i>
+      <div v-for="(menu,index) in menuList" :key="menu">
+        <i :class="menu.class" @click="menuAction(menu)"></i>
       </div>
       <div class='menu' :class="isClose?'':'ss_active'">
         <div class='share' :class="isClose?'':'close'" :data-rot='rot' @click="menuClick">
@@ -29,7 +20,23 @@
     components: {},
     data() {
       return {
-        menu:[],
+        menuList:[{
+          key:"4",//
+          class:"ion-android-settings",
+          name:"设置",
+        },{
+          key:"3",//个人照片库，分成多个照片库，每个库内一个照片墙，上传，删除，编辑Description 想着移植sketch
+          class:"ion-android-film",
+          name:"照片库",
+        },{
+          key:"2",//个人信息、作品展,编辑信息
+          class:"ion-android-options",
+          name:"明信片",
+        },{//展示自己、朋友、所有人的最新动态，好友列表，非好友列表，关注，取消关注，点击进入查看，权限问题
+          key:"1",
+          class:"ion-ios-home",
+          name:"主页面",
+        }],
         rot:180,
         isClose:true,
       }
@@ -48,6 +55,10 @@
         } else {
           this.isClose=true
         }
+      },
+      menuAction(menu){
+        this.$store.commit("setMenuAction",{menuAction:menu});
+        this.menuClick();
       }
     },
     beforeCreate() {},

@@ -5,12 +5,11 @@
       <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
       <div style="position:absolute;display:block;background:url('../../../static/images/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
     </div>
-    <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 360px; width: 1080px; height: 720px; overflow: hidden;">
+    <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 360px; width: 1080px!important; height: 720px; overflow: hidden;">
       <div v-for="(photo,index) in photoList" :key="photo" data-p="150.00" :style="index==0?'':'display: none;'">
         <img data-u="image" :src="photo.imageUrl" />
         <img data-u="thumb" :src="photo.imageUrl" />
       </div>
-      <a data-u="any" href="#" style="display:none">Image Gallery with Vertical Thumbnail</a>
     </div>
     <!-- Thumbnail Navigator -->
     <div data-u="thumbnavigator" class="abbreviated" style="position:absolute;left:0px;top:0px;width:360px;height:720px;" data-autocenter="2">
@@ -26,7 +25,7 @@
       <!-- Thumbnail Item Skin End -->
     </div>
     <!-- Arrow Navigator -->
-    <span data-u="arrowleft" class="jssora05l" style="top:0px;left:248px;width:40px;height:40px;" data-autocenter="2"></span>
+    <span data-u="arrowleft" class="jssora05l" style="top:0px;left:365px;width:40px;height:40px;" data-autocenter="2"></span>
     <span data-u="arrowright" class="jssora05r" style="top:0px;right:8px;width:40px;height:40px;" data-autocenter="2"></span>
   </div>
 </template>
@@ -346,17 +345,16 @@
           }
         };
         vm.jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+        if(vm.jssor_1_slider.$Elmt.parentNode==null)return
         let refWidth = vm.jssor_1_slider.$Elmt.parentNode.clientWidth;
         let refHeight = vm.jssor_1_slider.$Elmt.parentNode.clientHeight;
-
-        if (refWidth) {
-          refWidth = Math.min(refWidth, 1440);
-          refWidth = Math.max(refWidth, 450);
-          vm.jssor_1_slider.$ScaleWidth(refWidth);
-          vm.jssor_1_slider.$ScaleHeight(refHeight);
-        } else {
-          //   window.setTimeout(vm.ScaleSlider(), 30);
-        }
+        if (refWidth&&refHeight) {
+          //  refWidth = Math.min(refWidth, 1440);
+          //  refWidth = Math.max(refWidth, 450);
+          // vm.jssor_1_slider.$ScaleWidth(refWidth);
+          //vm.jssor_1_slider.$ScaleHeight(refHeight);//保持纵横比
+          vm.jssor_1_slider.$ScaleSize(refWidth, refHeight)  //不保持纵横比
+        };
       },
     },
     beforeCreate() {},
@@ -366,13 +364,15 @@
       let vm = this
       this.ScaleSlider();
       window.onresize = () => {
+        if(vm.jssor_1_slider.$Elmt.parentNode==null)return
         let refWidth = vm.jssor_1_slider.$Elmt.parentNode.clientWidth;
         let refHeight = vm.jssor_1_slider.$Elmt.parentNode.clientHeight;
-        if (refWidth) {
-          refWidth = Math.min(refWidth, 1440);
-          refWidth = Math.max(refWidth, 450);
-          vm.jssor_1_slider.$ScaleWidth(refWidth);
-          vm.jssor_1_slider.$ScaleHeight(refHeight);
+        if (refWidth&&refHeight) {
+          //  refWidth = Math.min(refWidth, 1440);
+          //  refWidth = Math.max(refWidth, 450);
+          // vm.jssor_1_slider.$ScaleWidth(refWidth);
+          //vm.jssor_1_slider.$ScaleHeight(refHeight);//保持纵横比
+          vm.jssor_1_slider.$ScaleSize(refWidth, refHeight)  
         };
       }
     }

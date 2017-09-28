@@ -7,7 +7,7 @@ import ElementUI from 'element-ui'
 import plugins from './plugins'
 import store from './store'
 import particles from '../static/js/particles/particles'
-import jssor from '../static/js/jssor.slider-21.1.6'
+import jssor from '../static/js/jssor.slider.min'
 // ## Import styles
 // =========================
 import 'element-ui/lib/theme-default/index.css'

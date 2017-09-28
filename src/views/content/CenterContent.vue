@@ -1,21 +1,28 @@
 <template>
   <div class="content">
-    <photo-wall></photo-wall>
+    <photo-wall v-if="menuAction=='3'" ></photo-wall>
+    <home-page v-if="menuAction=='1'" ></home-page>
   </div>
 </template>
 <script>
   import photoWall from '../../components/photoWall/photoWall'
+  import HomePage from './homePage/HomePage.vue'
   export default {
     name: "content",
     directives: {},
     components: {
-      photoWall
+      photoWall,
+      HomePage
     },
     data() {
       return {}
     },
     props: {},
-    computed: {},
+    computed: {
+      menuAction(){
+        return this.$store.state.systemActionParam.menu.key;
+      }
+    },
     watch: {},
     methods: {},
     beforeCreate() {},

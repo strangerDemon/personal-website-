@@ -5,7 +5,7 @@ import {
   asmx
 } from '@/utils'
 import axios from 'axios'
-
+import * as modules from './modules'
 Vue.use(Vuex)
 
 //获得本地json数据，后期对接接口后可去除
@@ -35,5 +35,6 @@ const mutations = {
 export default new Vuex.Store({
   state,
   getters,
-  mutations
+  mutations,
+  modules
 })

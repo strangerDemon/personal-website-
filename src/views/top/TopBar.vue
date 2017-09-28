@@ -1,26 +1,22 @@
 <template>
   <div class="topBar">
+    <h1 class="title">{{topInfo.title}}</h1>
   </div>
 </template>
 <script>
-  import {
-    mapState,
-    mapGetters,
-    mapActions,
-    mapMutations
-  } from 'vuex'
   export default {
     name: "topBar",
     directives: {},
     components: {},
     data() {
-      return {}
+      return {
+        topInfo: {
+          title: "狮子的尾巴"
+        }
+      }
     },
     props: {},
-    computed: {
-      ...mapState(['']),
-      ...mapGetters(['']),
-    },
+    computed: {},
     watch: {},
     methods: {},
     beforeCreate() {},
@@ -34,7 +30,17 @@
   .topBar {
     position: relative;
     height: 100px;
-    background-color: #1D8CE0;
+    background-color: rgba(49, 63, 86, 0.8);
+  }
+
+  .topBar .title {
+    text-align: center;
+    font-size: 3em;
+    font-weight: 600;
+    line-height:50px;
+    padding: 20px 0;
+    color: #fff;
+    margin: 0;
   }
 
 </style>

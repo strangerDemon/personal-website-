@@ -1,2 +1,3 @@
-import initSysConfig from './initSysConfig'
-export {initSysConfig}
+import initSysConfig from "./initSysConfig";
+import systemActionParam from "./systemActionParam";
+export { initSysConfig, systemActionParam };
