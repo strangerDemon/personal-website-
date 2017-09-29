@@ -1,0 +1,659 @@
+﻿.divRoute {
+    position: absolute;
+    left: 20px;
+    top: 80px;
+    width: 360px;
+    z-index: 100;
+    border-style: none;
+    box-shadow: 1px 1px 3px rgba(51, 133, 255, 0.35);
+    padding: 0px;
+    background-color: #ffffff;
+}
+
+.btnroutecar {
+    width: 100px;
+    background-image: url(/src/assets/img/route/car_1.png);
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position-x: 25px;
+    background-position-y: 7px;
+    padding-left: 50px;
+    height: 30px;
+    padding-top: 8px;
+    float: left;
+    margin-left: 30px;
+    background-color: #ffffff;
+    color: #3385FF;
+    border-top: solid 1px #3385FF;
+    cursor: pointer;
+    border-right: solid 1px #3385FF;
+    border-left: solid 1px #3385FF;
+}
+
+.btnroutecar:hover {
+    background-image: url(/src/assets/img/route/car.png);
+}
+
+.btnroutebus {
+    width: 100px;
+    background-image: url(/src/assets/img/route/bus_1.png);
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position-x: 25px;
+    background-position-y: 7px;
+    color: white;
+    padding-left: 50px;
+    height: 30px;
+    padding-top: 8px;
+    float: left;
+    border-top: solid 1px #3385FF;
+    cursor: pointer;
+    border-right: solid 1px #3385FF;
+    border-left: solid 1px #3385FF;
+}
+
+.btnroutebus:hover {
+    background-image: url(/src/assets/img/route/bus.png);
+    color: #3385FF;
+    background-color: #ffffff;
+}
+
+.btnrouterun {
+    width: 100px;
+    background-image: url(/src/assets/img/route/walk_1.png);
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position-x: 25px;
+    background-position-y: 7px;
+    color: white;
+    padding-left: 50px;
+    height: 30px;
+    padding-top: 8px;
+    float: left;
+    border-top: solid 1px #3385FF;
+    border-top: solid 1px #3385FF;
+    cursor: pointer;
+    border-right: solid 1px #3385FF;
+    border-left: solid 1px #3385FF;
+}
+
+.btnrouterun:hover {
+    background-image: url(/src/assets/img/route/walk.png);
+    color: #3385FF;
+    background-color: #ffffff;
+}
+
+.route_updown {
+    background-image: url(/src/assets/img/route/updown.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: block;
+    height: 20px;
+    position: absolute;
+    width: 20px;
+    top: 70px;
+    left: 10px;
+}
+
+.route_start_end_pnt {
+    margin-left: 50px;
+    top: 5px;
+    position: relative;
+}
+
+.route_start_png {
+    border-bottom: 1px solid #e6e6e6;
+    width: 270px;
+    margin-bottom: 10px;
+    margin-top: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.route_start_png input {
+    height: 30px;
+    width: 230px;
+    font-size: 14px;
+    border: none;
+    background-color: white;
+}
+
+.route_end_png {
+    border-bottom: 1px solid #e6e6e6;
+    width: 270px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.route_end_png input {
+    height: 30px;
+    width: 230px;
+    font-size: 14px;
+    border: none;
+    background-color: white;
+}
+
+.route_btn {
+    margin-top: 20px;
+    margin-bottom: 60px;
+    font-size: 14px;
+}
+
+.route_btn span {
+    color: #3385FF;
+    cursor: pointer;
+    float: left;
+    margin-left: 50px;
+}
+
+.route_btn span:hover {
+    text-decoration: underline;
+}
+
+.route_btn div {
+    background-color: #3385FF;
+    line-height: 25px;
+    margin-left: 137px;
+    float: right;
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    width: 80px;
+    color: white;
+    float: left;
+    cursor: pointer;
+}
+
+.route_btn div:hover {
+    box-shadow: 1px 1px 5px rgba(51, 133, 255, 0.65);
+}
+
+.route_car_style {
+    float: left;
+    width: 360px;
+    height: 31px;
+    border-bottom: solid 1px #3385FF;
+    border-top: solid 1px #3385FF;
+    margin-top: 5px;
+    color: white;
+    font-size: 14px;
+}
+
+.route_car_style_time {
+    background-color: #3385FF;
+    line-height: 29px;
+    margin-left: 55px;
+    float: right;
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    width: 80px;
+    color: white;
+    float: left;
+    cursor: pointer;
+    border-left: solid 1px #3385FF;
+}
+
+.route_car_style_time:hover {
+    color: #ffffff;
+    background-color: #3385FF;
+}
+
+.route_car_style_distance {
+    line-height: 29px;
+    float: right;
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    width: 80px;
+    color: #3385FF;
+    float: left;
+    cursor: pointer;
+    border-left: solid 1px #3385FF;
+}
+
+.route_car_style_distance:hover {
+    color: #ffffff;
+    background-color: #3385FF;
+}
+
+.route_car_style_highspeed {
+    line-height: 29px;
+    float: right;
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    width: 80px;
+    color: #3385FF;
+    float: left;
+    cursor: pointer;
+    border-left: solid 1px #3385FF;
+    border-right: solid 1px #3385FF;
+}
+
+.route_car_style_highspeed:hover {
+    background-color: #3385FF;
+    color: #ffffff;
+}
+
+.route_item {
+    float: left;
+    padding: 8px;
+    border-bottom: 1px solid #f0f0f0;
+    width: 100%;
+    margin-left: 35px;
+    width: 300px;
+    padding-bottom: 5px;
+}
+
+.route_item:hover {
+    background-color: #FAFAFA;
+}
+
+.route_dir_car_ico {
+    content: " ";
+    position: relative;
+    border: 1px solid #ddd;
+    display: block;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    left: -35px;
+    margin-top: 0px;
+    background-image: url(/src/assets/img/route/route_car.png);
+    background-size: 19px 19px;
+    float: left;
+}
+
+.route_dir_waik_ico {
+    content: " ";
+    position: relative;
+    border: 1px solid #ddd;
+    display: block;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    left: -35px;
+    margin-top: 0px;
+    background-image: url(/src/assets/img/route/walk.png);
+    background-size: 19px 19px;
+    float: left;
+}
+
+.route_dir_car_end_ico {
+    content: " ";
+    position: relative;
+    border: 1px solid #ddd;
+    display: block;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    left: -35px;
+    margin-top: 0px;
+    background-image: url(/src/assets/img/route/route_end.png);
+    background-size: 19px 19px;
+    float: left;
+}
+/*
+.route_dir_line {
+    content: "";
+    width: 5px;
+    height: 920px;
+    background-color: #ddd;
+    DISPLAY: BLOCK;
+    margin-top: 25px;
+    margin-left: 16px;
+}*/
+
+.route_item_road {
+    font-weight: 700;
+    color: #565656;
+    font-size: 14px;
+    display: block;
+    position: relative;
+    left: -20px;
+}
+
+.route_item_direction {
+    font-weight: 400;
+    color: #999;
+    font-size: 12px;
+    display: inline-block;
+    position: relative;
+    width: 300px;
+    padding-top: 10px;
+}
+
+.route_his_op {
+    border-bottom: 1px solid #e6e6e6;
+    height: 40px;
+    float: left;
+    width: 330px;
+    padding: 5px 10px 5px 10px;
+    margin: 5px 10px 5px 10px;
+}
+
+.route_his_op h2 {
+    display: block;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    background: url(/src/assets/img/route/history.png) 2px 7px no-repeat;
+    font-size: 14px;
+    text-indent: 25px;
+    color: #333;
+    font-weight: 400;
+}
+
+.route_his_op a {
+    top: 6px;
+    right: 5px;
+    color: #AAA;
+    font-size: 12px;
+    text-decoration: none;
+    margin-top: 8px;
+    float: right;
+    display: block;
+}
+
+.route_his_list {
+    display: block;
+    float: left;
+    width: 100%;
+    height: auto;
+}
+
+.route_his_list ul {
+    margin: 5px 15px 5px 10px;
+}
+
+.route_his_list ul li {
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    background-size: 14px;
+    position: relative;
+}
+
+.route_his_list ul li:hover {
+    background-color: #FAFAFA;
+}
+
+.route_his_item_logo {
+    background: url(/src/assets/img/route/clock-icon.png) no-repeat;
+}
+
+.route_his_item_del {
+    margin-top: 8px;
+    display: block;
+    float: right;
+    background: url(/src/assets/img/route/close.png) no-repeat;
+    background-size: 12px;
+}
+
+.rout_txt {
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 14px;
+    display: block;
+    width: 250px;
+}
+
+.routePntSel {
+    width: 70px;
+    height: 25px;
+    float: right;
+    border: solid 1px #ffffff;
+    margin-right: 10px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    line-height: 22px;
+    margin-top: 3px;
+}
+
+.route_bus_style_item {
+    background-color: #3385FF;
+    line-height: 29px;
+    float: right;
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    width: 70px;
+    color: white;
+    float: left;
+    cursor: pointer;
+    border-left: solid 1px #3385FF;
+    border-right: solid 1px #3385FF;
+}
+
+.route_bus_style {
+    float: left;
+    width: 360px;
+    height: 31px;
+    border-bottom: solid 1px #3385FF;
+    border-top: solid 1px #3385FF;
+    margin-top: 5px;
+    color: white;
+    font-size: 14px;
+}
+
+.route_bus_item {
+    width: 100%;
+    background: url(/src/assets/img/route/arrow-down.png) no-repeat;
+    background-position-x: 320px;
+    background-position-y: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: auto;
+    border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid #f0f0f0;
+    background-color: #FAFAFA;
+    float: left;
+    font-size: 12px;
+}
+
+.route_bus_title {
+    width: 100%;
+    background: url(/src/assets/img/route/bus.png) no-repeat;
+    background-position-x: 15px;
+    background-position-y: 9px;
+    line-height: 35px;
+    background-size: 18px 18px;
+    padding-left: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #565656;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.route_bus_item_begin_dir {
+    display: block;
+    float: left;
+    width: 292px;
+    color: #878a8c;
+    line-height: 25px;
+}
+
+.route_bus_detail {
+    background-color: #FFFFFF;
+    height: auto;
+    display: block;
+    float: left;
+}
+
+
+
+.route_bus_item_split {
+    float: left;
+    margin-left: 40px;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 8px 8px 2px 8px;    
+    width: 80%;
+}
+
+.route_bus_item_split :hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.route_dir_bus_line {
+    float: left;
+    width: 3px;
+    height: 360px;
+    background-color: #ddd;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+.route_bus_item_begin,
+.route_bus_item_end {
+    float: left;
+    margin-left: 40px;
+    /*border-top: 1px solid #f0f0f0;*/
+    border-bottom: 1px solid #f0f0f0;
+    padding: 8px;
+    width: 80%;
+    z-index: 22;
+}
+
+.route_bus_item_begin_title,
+.route_bus_item_end_title {
+    display: block;
+    float: left;
+    font-weight: bold;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.route_bus_item_begin_title:hover {
+    text-decoration: underline;
+}
+
+.route_bus_item_end_title:hover {
+    text-decoration: underline;
+}
+
+.route_bus_item_end_dir {
+    display: block;
+    float: left;
+    width: 292px;
+    color: #878a8c;
+    line-height: 25px;
+}
+
+.route_dir_bus_begin_ico1 {
+    /* content: " "; */
+    position: relative;
+    border: 1px solid #ddd;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    margin-left: -41px;
+    margin-top: 0px;
+    background-image: url(/src/assets/img/route/route_begin.png);
+    background-size: 22px 22px;
+    float: left;
+    z-index: 99;
+}
+
+.route_dir_icon {
+    z-index: 2;
+    position: absolute;
+    border: 1px solid #ccc;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    margin-left: -41px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.route_dir_icon span {
+    display: inline-block;
+    /* margin-top: 1px; */
+    line-height: 24px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 13px;
+    color: #ffffff;
+    background-color: #0077ff;
+}
+
+.route_dir_icon i {
+    font-size: 18px;
+    color: #0077ff;
+    line-height: 26px;
+}
+
+.route_dir_bus_end_ico {
+    position: relative;
+    border: 1px solid #ddd;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    margin-left: -41px;
+    margin-top: 0px;
+    background-image: url(/src/assets/img/route/route_end.png);
+    background-size: 22px 22px;
+    float: left;
+    z-index: 99;
+}
+
+.route_dir_bus_node_ico {
+    position: relative;
+    border: 1px solid #ddd;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    margin-left: -41px;
+    margin-top: 0px;
+    background-image: url(/src/assets/img/route/bus.png);
+    background-size: 18px 18px;
+    background-position-x: 3px;
+    background-position-y: 3px;
+    background-repeat: no-repeat;
+    float: left;
+    z-index: 99;
+}
+
+.route_dir_bus_split_ico {
+    position: relative;
+    border: 1px solid #ddd;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    margin-left: -41px;
+    margin-top: 0px;
+    background-image: url(/src/assets/img/route/route_split.png);
+    background-size: 23px 23px;
+    float: left;
+    z-index: 99;
+}
+
+.route_bus_time {
+    color: #878a8c;
+    display: inline;
+    width: 292px;
+    display: block;
+    padding-top: 4px;
+}
+

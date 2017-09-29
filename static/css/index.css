@@ -1,0 +1,365 @@
+body,ol,ul,li,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0} 
+body{font:12px"宋体","Arial Narrow",HELVETICA;background:#fff;-webkit-text-size-adjust:100%;} 
+a{color:#2d374b;text-decoration:none} 
+a:hover{color:#cd0200;text-decoration:underline} 
+em{font-style:normal} 
+li{list-style:none} 
+img{border:0;vertical-align:middle} 
+table{border-collapse:collapse;border-spacing:0} 
+p{word-wrap:break-word} 
+
+body{
+  overflow: hidden;
+}
+
+input::-ms-clear {
+  display: none
+}
+
+button {
+  overflow: visible
+}
+
+button,
+select {
+  text-transform: none
+}
+
+button,
+html input[type=button],
+input[type=reset],
+input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default
+}
+
+.layerbox,
+.tooldragbar {
+  position: absolute;
+  cursor: move
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0
+}
+
+input {
+  line-height: normal
+}
+
+input[type=checkbox],
+input[type=radio] {
+  box-sizing: border-box;
+  padding: 0
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  height: auto
+}
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box
+}
+
+.id-icon1 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -107px -243px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon2 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -172px -243px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon3 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -237px -243px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon4 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -302px -243px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon5 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -366px -243px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon6 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -431px -243px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon7 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -496px -243px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon8 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -561px -243px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon9 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -626px -243px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon10 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -691px -243px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon11 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -107px -417px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon12 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -172px -417px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon13 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -237px -417px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon14 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -302px -417px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon15 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -366px -417px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon16 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -431px -417px;
+  float: left;
+  width: 19px;
+  height: 32px
+}
+
+.id-icon17 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -496px -417px;
+  float: left;
+  width: 20px;
+  height: 32px
+}
+
+.id-icon18 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -561px -417px;
+  float: left;
+  width: 20px;
+  height: 32px
+}
+
+.id-icon19 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -626px -417px;
+  float: left;
+  width: 20px;
+  height: 32px
+}
+
+.id-icon20 {
+  background-image: url("../img/item_mapmarker.png");
+  background-position: -691px -417px;
+  float: left;
+  width: 20px;
+  height: 32px
+}
+
+.hide {
+  display: none;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+  text-decoration: none;
+}
+
+ul.tabs.dir_tab {
+  width: 280px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  height: 30px;
+  margin: 0 auto;
+  white-space: nowrap
+}
+
+ul.tabs.dir_tab li {
+  height: 30px;
+  width: 31.3333%;
+  line-height: 30px;
+  position: relative;
+  display: block;
+  float: left;
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: .8px
+}
+
+ul.tabs.dir_tab li a {
+  display: inline-block;
+  /*color: #fff;*/
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  opacity: .5
+}
+
+ul.tabs.dir_tab li:after {
+  content: "";
+  width: 0
+}
+
+ul.tabs.dir_tab li a:hover {
+  opacity: .72
+}
+
+ul.tabs.dir_tab li a.current {
+  opacity: 1
+}
+
+ul.tabs.dir_tab li a.icon-car {
+  background: url("../img/icon/icon_car.png") no-repeat 50%;
+  background-size: 19px 19px
+}
+
+ul.tabs.dir_tab li a.icon-bus {
+  background: url("../img/icon/icon_bus.png") no-repeat 50%;
+  background-size: 20px 19px
+}
+
+ul.tabs.dir_tab li a.icon-walk {
+  background: url("../img/icon/icon_walk.png") no-repeat 50%;
+  background-size: 12px 19px
+}
+
+
+/*公交站点查询样式*/
+
+.contentPane .busStation .img {
+  width: 30px;
+  height: 30px;
+  background-color: #0d89f5;
+  background-size: 15.5px 18px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0px;
+  cursor: pointer;
+  position: absolute;
+}
+
+.contentPane .busStation a:hover {
+  color: #3385ff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*
+.contentPane .route {
+  background: url(static/img/mroute.png) no-repeat;
+  background-size: 22px 32px;
+}*/
+
+.contentPane-point {
+  position: relative;
+  height: 30px;
+  max-height: 30px;
+  z-index: 1;
+  background-color: #F7F7F7;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  /*justify-content: center;*/
+  padding:0px  8px;
+}
+
+.contentPane-point .route {
+  width: 30px;
+  height: 30px;
+  background: url("../img/mroute.png") 60% 40% no-repeat #0d89f5;
+  background-size: 15.5px 18px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.contentPane-point .noRoute {
+  width: 30px;
+  height: 30px;
+  background:60% 40% no-repeat #0d89f5;
+  background-size: 15.5px 18px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
