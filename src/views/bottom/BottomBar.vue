@@ -10,15 +10,14 @@
     directives: {},
     components: {},
     data() {
-      return {
-        bottomInfo: {
-          copyright: "Copyright @2017",
-          friendLine: "https://www.github.com/strangerdemon"
-        }
-      }
+      return {}
     },
     props: {},
-    computed: {},
+    computed: {
+      bottomInfo() {
+        return this.$store.state.systemParam.bottomInfo
+      }
+    },
     watch: {},
     methods: {
       open() {

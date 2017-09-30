@@ -1,30 +1,38 @@
 <template>
   <div class="content">
-    <photo-wall v-if="menuAction=='3'" ></photo-wall>
-    <home-page v-if="menuAction=='1'" ></home-page>
+    <home-page v-if="menuAction=='1'"></home-page>
+    <user-info-page v-if="menuAction=='2'"></user-info-page>
+    <album-page v-if="menuAction=='3'"></album-page>
+    <seeting-page v-if="menuAction=='4'"></seeting-page>
   </div>
 </template>
 <script>
-  import photoWall from '../../components/photoWall/photoWall'
   import HomePage from './homePage/HomePage.vue'
+  import UserInfoPage from './userInfo/UserInfoPage.vue'
+  import AlbumPage from './album/AlbumPage.vue'
+  import SeetingPage from './setting/SettingPage.vue'
   export default {
     name: "content",
     directives: {},
     components: {
-      photoWall,
-      HomePage
+      HomePage,
+      UserInfoPage,
+      AlbumPage,
+      SeetingPage
     },
     data() {
       return {}
     },
     props: {},
     computed: {
-      menuAction(){
+      menuAction() {
         return this.$store.state.systemActionParam.menu.key;
-      }
+      },
     },
     watch: {},
-    methods: {},
+    methods: {
+
+    },
     beforeCreate() {},
     created() {},
     destroyed() {},
@@ -38,6 +46,7 @@
     top: 100px;
     bottom: 40px;
     width: 100%;
-    height:calc(100vh - 140px)
+    height: calc(100vh - 140px)
   }
+
 </style>

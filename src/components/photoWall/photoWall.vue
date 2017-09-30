@@ -6,7 +6,7 @@
       <div style="position:absolute;display:block;background:url('../../../static/images/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
     </div>
     <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 360px; width: 1080px!important; height: 720px; overflow: hidden;">
-      <div v-for="(photo,index) in photoList" :key="photo" data-p="150.00" :style="index==0?'':'display: none;'">
+      <div v-for="(photo,index) in photoList.images" :key="photo" data-p="150.00" :style="index==0?'':'display: none;'">
         <img data-u="image" :src="photo.imageUrl" />
         <img data-u="thumb" :src="photo.imageUrl" />
       </div>
@@ -37,36 +37,6 @@
     data() {
       return {
         jssor_1_slider: null,
-        //数据源
-        photoList: [{
-          imageUrl: "../../../static/images/01.jpg"
-        }, {
-          imageUrl: "../../../static/images/02.jpg"
-        }, {
-          imageUrl: "../../../static/images/03.jpg"
-        }, {
-          imageUrl: "../../../static/images/04.jpg"
-        }, {
-          imageUrl: "../../../static/images/05.jpg"
-        }, {
-          imageUrl: "../../../static/images/06.jpg"
-        }, {
-          imageUrl: "../../../static/images/07.jpg"
-        }, {
-          imageUrl: "../../../static/images/08.jpg"
-        }, {
-          imageUrl: "../../../static/images/09.jpg"
-        }, {
-          imageUrl: "../../../static/images/10.jpg"
-        }, {
-          imageUrl: "../../../static/images/11.jpg"
-        }, {
-          imageUrl: "../../../static/images/12.jpg"
-        }, {
-          imageUrl: "../../../static/images/13.jpg"
-        }, {
-          imageUrl: "../../../static/images/14.jpg"
-        }],
         //样式
         jssor_1_SlideshowTransitions: [{
           $Duration: 1200,
@@ -311,7 +281,10 @@
         }]
       }
     },
-    props: {},
+    props: {
+      //不能后渲染
+      photoList: Object,
+    },
     computed: {},
     watch: {},
     methods: {
@@ -320,7 +293,7 @@
         let transtions = [];
         let j;
         let length = vm.jssor_1_SlideshowTransitions.length;
-        for (let i = 0; i < vm.photoList.length; i++) {
+        for (let i = 0; i < vm.photoList.images.length; i++) {
           j = Math.random() * length
           transtions.push(vm.jssor_1_SlideshowTransitions[~~j])
         }
@@ -345,15 +318,15 @@
           }
         };
         vm.jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-        if(vm.jssor_1_slider.$Elmt.parentNode==null)return
+        if (vm.jssor_1_slider.$Elmt.parentNode == null) return
         let refWidth = vm.jssor_1_slider.$Elmt.parentNode.clientWidth;
         let refHeight = vm.jssor_1_slider.$Elmt.parentNode.clientHeight;
-        if (refWidth&&refHeight) {
+        if (refWidth && refHeight) {
           //  refWidth = Math.min(refWidth, 1440);
           //  refWidth = Math.max(refWidth, 450);
           // vm.jssor_1_slider.$ScaleWidth(refWidth);
           //vm.jssor_1_slider.$ScaleHeight(refHeight);//保持纵横比
-          vm.jssor_1_slider.$ScaleSize(refWidth, refHeight)  //不保持纵横比
+          vm.jssor_1_slider.$ScaleSize(refWidth, refHeight) //不保持纵横比
         };
       },
     },
@@ -364,17 +337,18 @@
       let vm = this
       this.ScaleSlider();
       window.onresize = () => {
-        if(vm.jssor_1_slider.$Elmt.parentNode==null)return
+        if (vm.jssor_1_slider.$Elmt.parentNode == null) return
         let refWidth = vm.jssor_1_slider.$Elmt.parentNode.clientWidth;
         let refHeight = vm.jssor_1_slider.$Elmt.parentNode.clientHeight;
-        if (refWidth&&refHeight) {
+        if (refWidth && refHeight) {
           //  refWidth = Math.min(refWidth, 1440);
           //  refWidth = Math.max(refWidth, 450);
           // vm.jssor_1_slider.$ScaleWidth(refWidth);
           //vm.jssor_1_slider.$ScaleHeight(refHeight);//保持纵横比
-          vm.jssor_1_slider.$ScaleSize(refWidth, refHeight)  
+          vm.jssor_1_slider.$ScaleSize(refWidth, refHeight)
         };
       }
+
     }
   }
 

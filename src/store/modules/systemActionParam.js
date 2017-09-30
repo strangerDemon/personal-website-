@@ -26,15 +26,7 @@ const getters = {};
    * @type {Object}
    */
 const mutations = {
-  //标绘
-//   getInitSysConfig(state, info) {
-//     asmx.post("getSysConfigPara").then(function(resp) {
-//       //  console.log("getSysConfigPara",resp);
-//       state.info = resp;
-//     });
-//   },
   setMenuAction(state, info){
-    console.log("setMenuAction",info);
     state.menu = info.menuAction;
   }
 };
