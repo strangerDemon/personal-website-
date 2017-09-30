@@ -1,3 +1,4 @@
-import initSysConfig from "./initSysConfig";
+import systemParam from "./systemParam";
 import systemActionParam from "./systemActionParam";
-export { initSysConfig, systemActionParam };
+import photoParam from "./photoParam";
+export { systemParam, systemActionParam,photoParam };

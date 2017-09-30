@@ -9,14 +9,14 @@
     directives: {},
     components: {},
     data() {
-      return {
-        topInfo: {
-          title: "狮子的尾巴"
-        }
-      }
+      return {}
     },
     props: {},
-    computed: {},
+    computed: {
+      topInfo() {
+        return this.$store.state.systemParam.topInfo
+      }
+    },
     watch: {},
     methods: {},
     beforeCreate() {},
@@ -37,7 +37,7 @@
     text-align: center;
     font-size: 3em;
     font-weight: 600;
-    line-height:50px;
+    line-height: 50px;
     padding: 20px 0;
     color: #fff;
     margin: 0;
