@@ -14,56 +14,61 @@
       <!-- <img src="http://qzonestyle.gtimg.cn/qzone_v6/img/feed/loading.gif" class="load_img none"> -->
     </div>
     <div class="images">
-       <el-carousel :interval="4000" type="card" height="200px">
+      <el-carousel :interval="4000" type="card" height="200px">
         <el-carousel-item v-for="item in images" :key="item">
-           <img :src="item.src">
+          <img :src="item.src">
         </el-carousel-item>
       </el-carousel>
       <!-- <img src="http://a4.qpic.cn/psb?/V12rT0Bg3JXlvv/Iq.2yw5AYnOF0..mPIz8dmItuZ*m19s0jSDcJMZ35VU!/m/dPMAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=LAQgAwAAAAARADw!&amp;t=5&amp;vuin=735359571&amp;tm=1506754800&amp;sce=60-4-3&amp;rf=0-0"
-        style="margin-left:-31px;margin-top:0px;height:185px;width:246px;">
-      <img src="http://a4.qpic.cn/psb?/V12rT0Bg3JXlvv/BWL37kqc1o5l*FcJUts4VtUDSDytzuEGcVTjHmuu3MA!/m/dPMAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=LAQgAwAAAAARADw!&amp;t=5&amp;vuin=735359571&amp;tm=1506754800&amp;sce=60-4-3&amp;rf=0-0"
-        style="margin-left:-31px;margin-top:0px;height:185px;width:246px;">
-      <img src="http://a3.qpic.cn/psb?/V12rT0Bg3JXlvv/pl7.MsbBh7bJ.byVU*LB.6PVxpY.8Urhe2Yl8i0r*Ck!/m/dPIAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=6APoAwAAAAARADc!&amp;t=5&amp;vuin=735359571&amp;tm=1506754800&amp;sce=60-4-3&amp;rf=0-0"
-        style="margin-left:0px;margin-top:0px;height:185px;width:185px;"></div> -->
-    <div class="foot">
-      <p class="item"> <i class="fui-icon icon-print-phone"></i><span class="ui-mr8 state">来自&nbsp;<a href="http://z.qzone.com?from=iphonegrzxpl" target="_blank" class=" phone-style state">iPhone 6s (4G)</a>&nbsp;</span>        </p>
+          style="margin-left:-31px;margin-top:0px;height:185px;width:246px;">
+        <img src="http://a4.qpic.cn/psb?/V12rT0Bg3JXlvv/BWL37kqc1o5l*FcJUts4VtUDSDytzuEGcVTjHmuu3MA!/m/dPMAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=LAQgAwAAAAARADw!&amp;t=5&amp;vuin=735359571&amp;tm=1506754800&amp;sce=60-4-3&amp;rf=0-0"
+          style="margin-left:-31px;margin-top:0px;height:185px;width:246px;">
+        <img src="http://a3.qpic.cn/psb?/V12rT0Bg3JXlvv/pl7.MsbBh7bJ.byVU*LB.6PVxpY.8Urhe2Yl8i0r*Ck!/m/dPIAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=6APoAwAAAAARADc!&amp;t=5&amp;vuin=735359571&amp;tm=1506754800&amp;sce=60-4-3&amp;rf=0-0"
+          style="margin-left:0px;margin-top:0px;height:185px;width:185px;"></div> -->
+      <div class="foot">
+        <p class="item">
+          <i class="fui-icon icon-print-phone"></i>
+          <span class="ui-mr8 state">来自&nbsp;
+            <a href="http://z.qzone.com?from=iphonegrzxpl" target="_blank" class=" phone-style state">iPhone 6s (4G)</a>&nbsp;</span>
+        </p>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 <script>
-  export default {
-    name: "circleOfFriendsContent",
-    directives: {},
-    components: {},
-    data() {
-      return {
-        images:[{
-          src:"http://a4.qpic.cn/psb?/V12rT0Bg3JXlvv/Iq.2yw5AYnOF0..mPIz8dmItuZ*m19s0jSDcJMZ35VU!/m/dPMAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=LAQgAwAAAAARADw!&amp;t=5&amp;vuin=735359571&amp;tm=1506754800&amp;sce=60-4-3&amp;rf=0-0",
-          descrition:""
-        },{
-          src:"http://a4.qpic.cn/psb?/V12rT0Bg3JXlvv/BWL37kqc1o5l*FcJUts4VtUDSDytzuEGcVTjHmuu3MA!/m/dPMAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=LAQgAwAAAAARADw!&amp;t=5&amp;vuin=735359571&amp;tm=1506754800&amp;sce=60-4-3&amp;rf=0-0",
-          descrition:""
-        },{
-          src:"http://a3.qpic.cn/psb?/V12rT0Bg3JXlvv/pl7.MsbBh7bJ.byVU*LB.6PVxpY.8Urhe2Yl8i0r*Ck!/m/dPIAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=6APoAwAAAAARADc!&amp;t=5&amp;vuin=735359571&amp;tm=1506754800&amp;sce=60-4-3&amp;rf=0-0",
-          descrition:""
-        }]
-      }
-    },
-    props: {
-      content: Object,
-    },
-    computed: {},
-    watch: {},
-    methods: {},
-    beforeCreate() {},
-    created() {},
-    destroyed() {},
-    mounted() {}
-  }
+export default {
+  name: "circleOfFriendsContent",
+  directives: {},
+  components: {},
+  data() {
+    return {
+      images: [{
+        src: "http://a4.qpic.cn/psb?/V12rT0Bg3JXlvv/Iq.2yw5AYnOF0..mPIz8dmItuZ*m19s0jSDcJMZ35VU!/m/dPMAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=LAQgAwAAAAARADw!&amp;t=5&amp;vuin=735359571&amp;tm=1506754800&amp;sce=60-4-3&amp;rf=0-0",
+        descrition: ""
+      }, {
+        src: "http://a4.qpic.cn/psb?/V12rT0Bg3JXlvv/BWL37kqc1o5l*FcJUts4VtUDSDytzuEGcVTjHmuu3MA!/m/dPMAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=LAQgAwAAAAARADw!&amp;t=5&amp;vuin=735359571&amp;tm=1506754800&amp;sce=60-4-3&amp;rf=0-0",
+        descrition: ""
+      }, {
+        src: "http://a3.qpic.cn/psb?/V12rT0Bg3JXlvv/pl7.MsbBh7bJ.byVU*LB.6PVxpY.8Urhe2Yl8i0r*Ck!/m/dPIAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=6APoAwAAAAARADc!&amp;t=5&amp;vuin=735359571&amp;tm=1506754800&amp;sce=60-4-3&amp;rf=0-0",
+        descrition: ""
+      }]
+    }
+  },
+  props: {
+    content: Object,
+  },
+  computed: {},
+  watch: {},
+  methods: {},
+  beforeCreate() { },
+  created() { },
+  destroyed() { },
+  mounted() { }
+}
 
 </script>
-<style lang="css" scoped>
-
-
+<style lang="css">
+.circleOfFriendsContent .images .el-carousel__mask {
+  background-color: rgba(211, 220, 230, 0.8)!important;
+}
 </style>
