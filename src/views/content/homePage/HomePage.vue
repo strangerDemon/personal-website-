@@ -18,15 +18,15 @@
         </div>
         <el-scrollbar tag="ul" wrap-class="el-autocomplete-suggestion__wrap" view-class="el-autocomplete-suggestion__list">
           <div class="participation-avatars">
-            <a v-for="(friend,index) in friendList" :key="friend" v-if="index<10||showMore" class="participant-avatar tooltipped tooltipped-n" :aria-label="friend.name" :href="'http://www.github.com/'+friend.name" :style="friendListShowType==0?'':'width:350px'">
+            <a v-for="(friend,index) in friendList" :key="friend" v-if="index<10||showMore" class="participant-avatar" :aria-label="friend.name" :href="'http://www.github.com/'+friend.name" :style="friendListShowType==0?'':'width:350px;height:70px'">
               <img v-if="friendListShowType==0" :alt="'@'+friend.name" class="avatar" :src="friend.avatars">
-              <span v-else style="width:350px;margin:5px;">
+              <span v-else class="avatarSpan">
                 <img :alt="'@'+friend.name" class="avatarLine" :src="friend.avatars">
-                <span>{{friend.name}}</span>
+                <span class="frinedName">{{friend.name}}</span>
                 <span>{{friend.deescription}}</span>
               </span>
             </a>
-            <a href="javascript:void(0)" class="participation-more" @click="showMore=!showMore">
+            <a href="javascript:void(0)" class="participant-avatar participation-more" @click="showMore=!showMore">
               {{!showMore?'更多...':'缩略...'}}</a>
 
           </div>
@@ -38,7 +38,7 @@
           <i class="ion-android-sync" style="float:right;margin-right:15px;font-size:24px;" @click="updateShowType('stranger')"></i>
         </div>
         <div class="participation-avatars">
-          <a v-for="(stranger,index) in strangerList" :key="stranger" class="participant-avatar tooltipped tooltipped-n" :aria-label="stranger.name" :href="'http://www.github.com/'+stranger.name">
+          <a v-for="(stranger,index) in strangerList" :key="stranger" class="participant-avatar" :aria-label="stranger.name" :href="'http://www.github.com/'+stranger.name">
             <img :alt="'@'+stranger.name" class="avatar" :src="stranger.avatars">
           </a>
         </div>
@@ -167,7 +167,7 @@ export default {
 }
 
 .homePage .userList .el-autocomplete-suggestion__wrap {
-  background-color: rgba(246,248,250,0.8);
+  background-color: rgba(246, 248, 250, 0.8);
   border: 0px solid #d1dbe5;
 }
 
@@ -177,7 +177,7 @@ export default {
 }
 
 .homePage .userList .participation-more {
-  margin: 6px 0 0;
+  margin: 0 12px;
   line-height: 70px;
   cursor: pointer;
 }
@@ -194,6 +194,18 @@ export default {
   border-radius: 3px;
   height: 45px;
   width: 45px;
+}
+
+.homePage .userList .avatarSpan {
+  width: 350px;
+  margin: 5px;
+  position: absolute;
+}
+
+.homePage .userList .avatarSpan .frinedName {
+  position: absolute;
+  bottom: 0px;
+  font-size: 18px;
 }
 
 .homePage .userList .avatarLine {
