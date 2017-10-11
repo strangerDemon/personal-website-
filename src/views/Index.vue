@@ -1,6 +1,7 @@
 <template>
   <div class="index">
-    <particles></particles>
+    <bolloon></bolloon>
+    <!-- <particles></particles> -->
     <main-content></main-content>
     <router></router>
   </div>
@@ -8,6 +9,7 @@
 
 <script>
   import particles from '../components/particles/particles'
+  import bolloon from '../components/bolloon/bolloon.vue'
   import mainContent from './MainContent'
   import router from './Router'
   export default {
@@ -15,6 +17,7 @@
     directives: {},
     components: {
       particles,
+      bolloon,
       mainContent,
       router
     },
