@@ -1,9 +1,9 @@
 <template>
   <div class="circle">
-    <circle-of-friends-avatar :userInfo="userInfo"></circle-of-friends-avatar>
+    <circle-of-friends-avatar :userInfo="userInfo" @showOrHide="open=arguments[0]"></circle-of-friends-avatar>
     <circle-of-friends-content :content="content"></circle-of-friends-content>
-    <circle-of-friends-star></circle-of-friends-star>
-    <circle-of-friends-comment></circle-of-friends-comment>
+    <circle-of-friends-star v-show="open"></circle-of-friends-star>
+    <circle-of-friends-comment v-show="open"></circle-of-friends-comment>
   </div>
 </template>
 <script>
@@ -24,6 +24,7 @@
       return {
         userInfo: null,
         content: null,
+        open:true,
       }
     },
     props: {
@@ -48,7 +49,7 @@
     position: relative;
     min-height: 100px;
     padding: 10px;
-    background-color: rgba(211,220,230,0.8);/*211,220,230 239,242,247*/
+    background-color: rgba(211,220,230,0.3);/*211,220,230 239,242,247*/
     margin: 10px;
   }
 

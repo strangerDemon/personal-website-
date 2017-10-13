@@ -1,6 +1,10 @@
 <template>
   <div class="topBar">
-    <h1 class="title">{{topInfo.title}}</h1>
+    <h1 class="title">{{topInfo.title}}
+    </h1>
+    <div class="weather">
+      <iframe scrolling="no" src="http://tianqiapi.com/api.php?style=tt&skin=pitaya" frameborder="0" width="590" height="98" allowtransparency="true"></iframe>
+    </div>
   </div>
 </template>
 <script>
@@ -9,7 +13,8 @@
     directives: {},
     components: {},
     data() {
-      return {}
+      return {
+      }
     },
     props: {},
     computed: {
@@ -41,6 +46,12 @@
     padding: 20px 0;
     color: #fff;
     margin: 0;
+  }
+
+  .topBar .weather {
+    position: absolute;
+    top: 0px;
+    right: 0px;
   }
 
 </style>

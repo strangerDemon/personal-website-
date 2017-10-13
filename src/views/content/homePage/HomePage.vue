@@ -128,7 +128,9 @@ export default {
 .homePage .circleOfFriends .el-scrollbar {
   height: 100%;
 }
-
+.homePage .circleOfFriends  .el-scrollbar__wrap{
+  overflow-x: hidden;
+}
 .homePage .circleOfFriends .el-scrollbar .el-autocomplete-suggestion__wrap {
   height: 100%!important;
   min-height: 100%!important;

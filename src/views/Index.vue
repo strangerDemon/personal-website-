@@ -1,7 +1,9 @@
 <template>
   <div class="index">
-    <bolloon></bolloon>
-    <!-- <particles></particles> -->
+    <div class="background">
+      <balloon v-if="backgroundIndex==0"></balloon>
+      <particles v-else-if="backgroundIndex==1"></particles>
+    </div>
     <main-content></main-content>
     <router></router>
   </div>
@@ -9,7 +11,7 @@
 
 <script>
   import particles from '../components/particles/particles'
-  import bolloon from '../components/bolloon/bolloon.vue'
+  import balloon from '../components/balloon/balloon.vue'
   import mainContent from './MainContent'
   import router from './Router'
   export default {
@@ -17,12 +19,14 @@
     directives: {},
     components: {
       particles,
-      bolloon,
+      balloon,
       mainContent,
       router
     },
     data() {
-      return {}
+      return {
+        backgroundIndex: ~~(Math.random() * 2)
+      }
     },
 
     computed: {
@@ -43,8 +47,8 @@
 <style lang="css">
   .index {
     position: relative;
-    top:0px;
-    left:0px;
+    top: 0px;
+    left: 0px;
     height: 100%;
     width: 100%;
     margin: 0 0 0 0;

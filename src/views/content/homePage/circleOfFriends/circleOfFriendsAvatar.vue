@@ -10,7 +10,7 @@
       <a target="_blank" href="http://user.qzone.qq.com/865778002" class="name">郑清华</a>
       <span>昨天 13:17</span>
     </div>
-    <div class="action"><i class="el-icon-arrow-down"></i></div>
+    <div class="action" @click="showOrHide()"><i :class="open?'el-icon-arrow-down':'el-icon-arrow-up'"></i></div>
   </div>
 </template>
 <script>
@@ -19,14 +19,22 @@
     directives: {},
     components: {},
     data() {
-      return {}
+      return {
+        open:true
+      }
     },
     props: {
       userInfo: Object,
     },
     computed: {},
-    watch: {},
-    methods: {},
+    watch: {
+    },
+    methods: {
+      showOrHide(){
+        this.open=!this.open
+        this.$emit("showOrHide",this.open)
+      }
+    },
     beforeCreate() {},
     created() {},
     destroyed() {},

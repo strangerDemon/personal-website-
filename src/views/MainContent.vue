@@ -42,6 +42,8 @@
     position: fixed;
     top: 0px;
     left: 5%;
+    z-index: 241;
+    min-width: 1320px;
   }
 
 </style>

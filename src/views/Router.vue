@@ -187,6 +187,7 @@
     -ms-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
+    z-index: 242;
   }
 
   #ss_menu>.menu {
