@@ -1,14 +1,14 @@
 <template>
   <div class="content">
     <home-page v-if="menuAction=='1'"></home-page>
-    <user-info-page v-if="menuAction=='2'"></user-info-page>
+    <work-demos v-if="menuAction=='2'"></work-demos>
     <album-page v-if="menuAction=='3'"></album-page>
     <seeting-page v-if="menuAction=='4'"></seeting-page>
   </div>
 </template>
 <script>
   import HomePage from './homePage/HomePage.vue'
-  import UserInfoPage from './userInfo/UserInfoPage.vue'
+  import WorkDemos from './workDemos/WorkDemos.vue'
   import AlbumPage from './album/AlbumPage.vue'
   import SeetingPage from './setting/SettingPage.vue'
   export default {
@@ -16,7 +16,7 @@
     directives: {},
     components: {
       HomePage,
-      UserInfoPage,
+      WorkDemos,
       AlbumPage,
       SeetingPage
     },

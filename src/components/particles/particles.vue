@@ -27,7 +27,7 @@
               "value": "1F2D3D", //"#F0E68C"//ffffff
             },
             "shape": {
-              "type": "circle",
+              "type": "circle",//circle edge triangle polygon star image
               "stroke": {
                 "width": 0,
                 "color": "#000000"

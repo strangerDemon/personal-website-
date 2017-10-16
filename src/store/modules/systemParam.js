@@ -238,7 +238,7 @@ const state = {
   },
   //top bar
   topInfo: {
-    title: "狮子的尾巴"
+    title: "" //狮子的尾巴
   }
 };
 
