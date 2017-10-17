@@ -1,32 +1,34 @@
 <template>
   <div class="workDemos">
     <el-scrollbar tag="ul" wrap-class="el-autocomplete-suggestion__wrap" view-class="el-autocomplete-suggestion__list">
-      <div class="frame" v-for="(demo,index) in demos" :key="index" v-html="'<'+demo.name+' class=frameDemo @click=router('+demo.name+')></'+demo.name+'>'">
-      </div>
+      <iframe class="frame" v-for="(demo,index) in demos" :key="index" :src="'/#/'+demo.url" frameborder="0"></iframe>
     </el-scrollbar>
   </div>
 </template>
 <script>
-  import particles from '../../../components/particles/particles'
-  import balloon from '../../../components/balloon/balloon'
-  import firefly from '../../../components/fireFly/firefly'
   export default {
     name: "workDemos",
     directives: {},
-    components: {
-      particles,
-      balloon,
-      firefly
-    },
+    components: {},
     data() {
       return {
         demos: [{
           name: 'particles',
+          url: 'particles'
         }, {
           name: 'balloon',
+          url: 'balloon'
         }, {
           name: 'firefly',
+          url: 'firefly'
+        }, {
+          name: 'heartLoading',
+          url: 'heartLoading'
         }],
+        //加载动画 发牌动画
+        col:5,//列
+        row:3,//行
+
       }
     },
     props: {},
@@ -40,18 +42,27 @@
     beforeCreate() {},
     created() {},
     destroyed() {},
-    mounted() {}
+    mounted() {
+        // window.on
+        //监听事件
+    }
   }
 
 </script>
-<style lang="css">
-  .workDemos .frame .frameDemo {
+<style>
+  .workDemos .frame frameDemo {
     position: absolute;
     width: 100%;
     height: 100%;
   }
 
+  .el-autocomplete-suggestion__wrap {
+    height: 100%;
+    max-height: 100%!important;
+  }
+
 </style>
+
 <style lang="css" scoped>
   .workDemos {
     position: absolute;

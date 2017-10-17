@@ -15,6 +15,7 @@
         size: 240, //宽度    
         rotationTime: 500, //创建时间间隔
         isLoop: true, //是否循环
+        boomType: 1, //0 无 1 旋转 2 炸裂
       }
     },
     props: {},
@@ -30,7 +31,7 @@
         if (vm.isLoop) {
           setTimeout(function () {
             clearInterval(timer)
-          }, vm.rotationTime*10)
+          }, vm.rotationTime * 10)
         }
       },
       //初始化
@@ -63,33 +64,46 @@
             'animation:' + 'balloonFloat ' + speed + 's' + loop + ';' +
             '-webkit-animation:' + 'balloonFloat ' + speed + 's' + loop
           )
-          balloon.setAttribute('onclick', 'boom()')
+          balloon.setAttribute('onclick', 'boom(this)')
           fragment.appendChild(balloon)
         }
         document.getElementById("balloons").appendChild(fragment)
       },
       //点击爆炸
-      boom() {
-        console.log(2);
+      boom(obj) {
+        console.log(obj);
+        let vm = this
+        switch (vm.boomType) {
+          case 0:
+            break;
+          case 1:
+            //旋转
+            break;
+          case 2:
+          //炸裂
+            break;
+          default:
+            break;
+        }
       }
     },
     beforeCreate() {},
     created() {},
     destroyed() {},
     mounted() {
-       this.init()
+      this.init()
     }
   }
 
 </script>
 <style lang="css">
-
-.balloons{
-  position: absolute;
+  .balloons {
+    position: absolute;
     width: 100%;
     height: 100%;
     background-color: antiquewhite
-}
+  }
+
   .balloon {
     position: absolute;
     width: 160px;
@@ -126,16 +140,26 @@
     border-right-color: #eaabb0/*border分为4块，可以单独赋色*/
   }
   /*动画*/
-
   @keyframes balloonFloat {
     from {
       top: 100vh;
-      display: block;
     }
     to {
       top: -300px;
-      display: none;
     }
   }
+  @keyframes transfrom{
+    from{
 
+    }to{
+
+    }
+  }
+  @keyframes boom{
+    from{
+      
+    }to{
+      
+    }
+  }
 </style>

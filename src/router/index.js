@@ -4,6 +4,7 @@ import Index from "@/views/Index";
 import particles from "@/components/particles/particles";
 import balloon from "@/components/balloon/balloon";
 import firefly from "@/components/fireFly/firefly";
+import heartLoading from "@/components/heartLoading/loading";
 Vue.use(Router);
 
 export default new Router({
@@ -30,6 +31,11 @@ export default new Router({
       path: "/firefly",
       name: "firefly",
       component: firefly
+    },
+    {
+      path: "/heartLoading",
+      name: "heartLoading",
+      component: heartLoading
     }
   ]
 });
