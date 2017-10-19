@@ -1,14 +1,16 @@
 <template>
   <div class="settingPage">
-      settingPage
+      <firefly></firefly>
   </div>
 </template>
 <script>
-
+import firefly from '../../../components/fireFly/firefly'
 export default {
   name: "settingPage",
   directives: {},
-  components: {},
+  components: {
+    firefly
+  },
   data () {
     return {
     }

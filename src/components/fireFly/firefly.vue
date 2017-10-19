@@ -67,6 +67,12 @@
     pointer-events: none;
   }
 
+  .firefly {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+  }
+
   .label {
     flex: 0;
     color: #b8c5d0;
