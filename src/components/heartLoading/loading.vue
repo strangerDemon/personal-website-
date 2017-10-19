@@ -44,7 +44,7 @@
 
   .heartLoading {
     position: fixed;
-    left: 50%;
+    left: calc(50vh);
     top: 50%;
   }
 
