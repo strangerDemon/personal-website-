@@ -12,15 +12,16 @@
               </div>
             </div>
             <div class="wings">
-              <div class="wing wing-a">
                 <!-- when check 
                           fly one place to another
                           opacity wing  animation:shock 1s infinite 
                       uncheck
                           stop all
                      -->
-              </div>
+              <div class="wing wing-a"></div>
               <div class="wing wing-b"></div>
+              <div class="wing-opacity wing-a"></div>
+              <div class="wing-opacity wing-b"></div>
             </div>
           </div>
         </label>
@@ -35,21 +36,18 @@ export default {
   components: {},
   data() {
     return {
-      fly() {
-
-      }
-    }
+      fly() {}
+    };
   },
   props: {},
   computed: {},
   watch: {},
   methods: {},
-  beforeCreate() { },
-  created() { },
-  destroyed() { },
-  mounted() { }
-}
-
+  beforeCreate() {},
+  created() {},
+  destroyed() {},
+  mounted() {}
+};
 </script>
 <style lang="css" scoped>
 body {
@@ -59,11 +57,11 @@ body {
   flex-direction: column;
   height: 100vh;
   background: radial-gradient(#0a2a43 30%, #09243a);
-  font-family: 'Asap', sans-serif;
+  font-family: "Asap", sans-serif;
 }
 
 body:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   top: 1rem;
@@ -89,7 +87,7 @@ body:after {
 .label {
   flex: 0;
   color: #b8c5d0;
-  letter-spacing: .04em;
+  letter-spacing: 0.04em;
   text-align: center;
   margin-bottom: 2rem;
   font-size: 3rem;
@@ -110,7 +108,7 @@ body:after {
 }
 
 .checkbox-wrap:after {
-  content: '';
+  content: "";
   display: block;
   padding-top: 50%;
 }
@@ -119,18 +117,26 @@ body:after {
   display: none;
 }
 
-.checkbox:checked~.firefly .abdomen {
+.checkbox:checked ~ .firefly .abdomen {
   background: #27231e;
   box-shadow: inset 0 0 1.5rem rgba(150, 0, 0, 0.75);
   animation: flicker 4000ms ease infinite;
 }
 
-.checkbox:checked~.firefly .wing-a {
+.checkbox:checked ~ .firefly .wing.wing-a {
   transform: rotate(30deg);
 }
 
-.checkbox:checked~.firefly .wing-b {
+.checkbox:checked ~ .firefly .wing-opacity.wing-a {
+  animation: shock-a 1s infinite;
+}
+
+.checkbox:checked ~ .firefly .wing.wing-b {
   transform: rotate(-30deg);
+}
+
+.checkbox:checked ~ .firefly .wing-opacity.wing-b {
+  animation: shock-b 1s infinite;
 }
 
 .head {
@@ -154,7 +160,7 @@ body:after {
 
 .eyes:before,
 .eyes:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   right: 0;
@@ -184,7 +190,7 @@ body:after {
 
 .antennae:before,
 .antennae:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   right: 0;
@@ -193,17 +199,17 @@ body:after {
   border-color: #0e0a0a;
   border-style: solid;
   padding-top: 65%;
-  border-width: .25rem .25rem .25rem 0;
+  border-width: 0.25rem 0.25rem 0.25rem 0;
 }
 
 .antennae:before {
   top: 80%;
-  border-radius: 0 100% 100% 100%;
+  animation: Tentacles-a 1s infinite;
 }
 
 .antennae:after {
   bottom: 80%;
-  border-radius: 100% 100% 100% 0;
+  animation: Tentacles-b 1s infinite;
 }
 
 .thorax {
@@ -230,14 +236,20 @@ body:after {
 }
 
 .abdomen:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background: repeating-linear-gradient(90deg, transparent 0, transparent 15%, rgba(0, 0, 20, 0.1) 15%, rgba(0, 0, 20, 0.1) 20%);
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 15%,
+    rgba(0, 0, 20, 0.1) 15%,
+    rgba(0, 0, 20, 0.1) 20%
+  );
   mix-blend-mode: multiply;
   border-radius: 100% 30% 30% 100%;
   z-index: 0;
@@ -256,7 +268,12 @@ body:after {
 .wings .wing {
   position: absolute;
   right: 0;
-  background: repeating-linear-gradient(#27231e 0%, #27231e 40%, #191613 40%, #191613 60%);
+  background: repeating-linear-gradient(
+    #27231e 0%,
+    #27231e 40%,
+    #191613 40%,
+    #191613 60%
+  );
   width: 100%;
   height: 50%;
   transition: all 200ms ease-out;
@@ -264,46 +281,130 @@ body:after {
   box-sizing: border-box;
   box-shadow: inset 0.2rem 0 0.1rem 0.5rem rgba(0, 0, 0, 0.5);
 }
-
+.wings .wing-opacity {
+  position: absolute;
+  right: 0;
+  background: repeating-linear-gradient(
+    #fafafa 0%,
+    #fafafa 40%,
+    #fffd99 40%,
+    #fffd99 60%
+  );
+  width: 100%;
+  height: 50%;
+  transition: all 200ms ease-out;
+  border: 1px solid #40341d;
+  box-sizing: border-box;
+  box-shadow: inset 0.1rem 0 0.1rem 0.1rem rgba(255, 255, 200, 0.5);
+}
 .wings .wing.wing-a {
+  z-index: 2;
   transform-origin: bottom right;
   top: 0;
   border-radius: 90% 30% 0 20%;
 }
-
+.wings .wing-opacity.wing-a {
+  z-index: 1;
+  transform-origin: bottom right;
+  top: 0;
+  border-radius: 90% 30% 0 20%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
 .wings .wing.wing-b {
+  z-index: 2;
   transform-origin: top right;
   top: 50%;
   border-radius: 20% 0 30% 90%;
 }
-
+.wings .wing-opacity.wing-b {
+  z-index: 1;
+  transform-origin: top right;
+  top: 50%;
+  border-radius: 20% 0 30% 90%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
 @keyframes flicker {
   0%,
   100% {
     background: #fefa01;
-    box-shadow: 0 0 1rem #fefa01, inset -0.25rem 0 0 0.5rem rgba(14, 10, 10, 0.1);
+    box-shadow: 0 0 1rem #fefa01,
+      inset -0.25rem 0 0 0.5rem rgba(14, 10, 10, 0.1);
   }
   30%,
   70% {
     background: #fffd99;
-    box-shadow: -1rem 0 8rem 1rem #fefa01, inset -0.25rem 0 0 0.5rem rgba(14, 10, 10, 0.1);
+    box-shadow: -1rem 0 8rem 1rem #fefa01,
+      inset -0.25rem 0 0 0.5rem rgba(14, 10, 10, 0.1);
   }
   50% {
-    box-shadow: -1rem 0 8rem 1rem rgba(254, 250, 1, 0.8), inset -0.25rem 0 0 0.5rem rgba(14, 10, 10, 0.1);
+    box-shadow: -1rem 0 8rem 1rem rgba(254, 250, 1, 0.8),
+      inset -0.25rem 0 0 0.5rem rgba(14, 10, 10, 0.1);
   }
 }
-
-@keyframes shock {
+@keyframes shock-a {
   0%,
-  100% {}
+  100% {
+    transform: rotate(0deg);
+  }
   10%,
-  90% {}
+  90% {
+    transform: rotate(6deg);
+  }
   20%,
-  80% {}
+  80% {
+    transform: rotate(12deg);
+  }
   30%,
-  70% {}
+  70% {
+    transform: rotate(18deg);
+  }
   40%,
-  60% {}
-  50% {}
+  60% {
+    transform: rotate(24deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+}
+@keyframes shock-b {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  90% {
+    transform: rotate(-6deg);
+  }
+  20%,
+  80% {
+    transform: rotate(-12deg);
+  }
+  30%,
+  70% {
+    transform: rotate(-18deg);
+  }
+  40%,
+  60% {
+    transform: rotate(-24deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+}
+@keyframes Tentacles-a {
+  0%,100%{
+    border-radius: 0 100% 100% 100%;
+  }
+  50% {
+    border-radius: 0 100% 100% 95%;
+  }
+}
+@keyframes Tentacles-b {
+   0%,100%{
+    border-radius: 95% 100% 100% 0;
+  }
+  50% {
+    border-radius: 100% 100% 100% 0;
+  }
 }
 </style>
