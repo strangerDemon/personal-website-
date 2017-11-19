@@ -44,7 +44,10 @@ export default {
       direction: 0,
 
       directionInterval: null,
-      moveInterval: null
+      moveInterval: null,
+      //firefly Attributes
+      width: 142,
+      height: 53
     };
   },
   props: {
@@ -59,14 +62,14 @@ export default {
     //对应的fireflyDiv模块位置方向修改
     fly(event) {
       let vm = this;
-      let newTop = event.clientX,
-        newLeft = event.clientY;
+      let newTop = event.offsetY,
+        newLeft = event.offsetX; //clientX,clientY 对应屏幕
       switch (vm.flyType) {
         case "flyAway":
-          vm.flyAway(newTop, newLeft);
+          vm.flyAway(newLeft, newTop);
           break;
         case "flyTo":
-          vm.flyTo(newTop, newLeft);
+          vm.flyTo(newLeft, newTop);
           break;
         default:
           break;
@@ -80,38 +83,48 @@ export default {
       clearInterval(vm.moveInterval);
       let _speed = Math.max(~~(Math.random() * this.speed), 1); //速度
       let _direction = ~~(
-        Math.atan((y - vm.top) / (x - vm.left)) *
+        Math.atan((y - vm.top - vm.height) / (x - vm.left - vm.width)) *
         180 /
         Math.PI
       ); //角度
+      vm.directionAction(x, y, _speed, _direction);
+    },
+    directionAction(x, y, _speed, _direction) {
+      let vm = this;
       //定时改变角度
       let i = vm.direction;
       vm.directionInterval = setInterval(function() {
         if (_direction >= 0 && i++ >= _direction) {
           clearInterval(vm.directionInterval);
+          vm.moveAction(x, y, _speed, _direction);
         } else if (_direction < 0 && i-- <= _direction) {
           clearInterval(vm.directionInterval);
+          vm.moveAction(x, y, _speed, _direction);
         } else {
           vm.direction = i;
           $(".fireflyDiv").css("transform", "rotate(" + i + "deg)");
         }
-      }, 100);
+      }, 20);
+    },
+    moveAction(x, y, _speed, _direction) {
+      let vm = this;
       vm.moveInterval = setInterval(function() {
-        if (y == vm.top && x == vm.left) {
+        if (y == vm.top + vm.height && x == vm.left + vm.width) {
           clearInterval(vm.moveInterval);
+          $("#checkbox").removeAttr("checked");
         } else {
           vm.top =
-            Math.abs(y - vm.top) > _speed
-              ? y > vm.top ? vm.top + _speed : vm.top - _speed
-              : y;
+            Math.abs(y - vm.top - vm.height) > _speed
+              ? y > vm.top + vm.height ? vm.top + _speed : vm.top - _speed
+              : y - vm.height;
           vm.left =
-            Math.abs(x - vm.left) > _speed
-              ? x > vm.left ? vm.left + _speed : vm.left - _speed
-              : x;
+            Math.abs(x - vm.left - vm.width) > _speed
+              ? x > vm.left + vm.width ? vm.left + _speed : vm.left - _speed
+              : x - vm.width;
           $(".fireflyDiv").css("top", vm.top);
           $(".fireflyDiv").css("left", vm.left);
         }
-      }, 100);
+      }, 20);
     }
   },
   beforeCreate() {},
@@ -140,8 +153,8 @@ export default {
   position: absolute;
   left: 200px;
   top: 300px;
-  width: 100px;
-  height: 50px;
+  /* width: 100px;
+  height: 50px; */
   /* max-width: 500px;
     max-height: 200px; */
 }

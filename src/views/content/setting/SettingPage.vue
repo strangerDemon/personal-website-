@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import firefly from '../../../components/fireFly/firefly'
+import firefly from '../../../components/c3Animation/fireFly/firefly'
 export default {
   name: "settingPage",
   directives: {},

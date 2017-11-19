@@ -11,7 +11,7 @@
 
 <script>
   import particles from '../components/particles/particles'
-  import balloon from '../components/balloon/balloon.vue'
+  import balloon from '../components/c3Animation/balloon/balloon'
   import mainContent from './MainContent'
   import router from './Router'
   export default {

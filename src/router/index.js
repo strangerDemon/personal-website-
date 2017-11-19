@@ -2,16 +2,18 @@ import Vue from "vue";
 import Router from "vue-router";
 import Index from "@/views/Index";
 import particles from "@/components/particles/particles";
+// css3 animation
 import balloon from "@/components/c3Animation/balloon/balloon";
 import firefly from "@/components/c3Animation/fireFly/firefly";
 import heartLoading from "@/components/c3Animation/heartLoading/loading";
+// h5 canvas
+import drawImage from "@/components/h5Canvas/drawImage/drawImage"
+import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge"
 
-import demo1 from "@/components/h5Canvas/demo1/index"
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       // meta: {
       //   requiresAuth: true //是否需要权限
       // },
@@ -40,9 +42,13 @@ export default new Router({
       component: heartLoading
     },
     {
-      path:"/demo1",
-      name:"demo1",
-      component:demo1
+      path: "/drawImage",
+      name: "drawImage",
+      component: drawImage
+    }, {
+      path: "/imageEnlarge",
+      name: "imageEnlarge",
+      component: imageEnlarge
     }
   ]
 });
