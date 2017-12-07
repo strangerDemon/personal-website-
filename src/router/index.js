@@ -7,13 +7,15 @@ import balloon from "@/components/c3Animation/balloon/balloon";
 import firefly from "@/components/c3Animation/fireFly/firefly";
 import heartLoading from "@/components/c3Animation/heartLoading/loading";
 // h5 canvas
-import drawImage from "@/components/h5Canvas/drawImage/drawImage"
-import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge"
+import drawImage from "@/components/h5Canvas/drawImage/drawImage";
+import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge";
+import bgParticle from "@/components/h5Canvas/20171207/index.vue";
 
 Vue.use(Router);
 
 export default new Router({
-  routes: [{
+  routes: [
+    {
       // meta: {
       //   requiresAuth: true //是否需要权限
       // },
@@ -45,10 +47,16 @@ export default new Router({
       path: "/drawImage",
       name: "drawImage",
       component: drawImage
-    }, {
+    },
+    {
       path: "/imageEnlarge",
       name: "imageEnlarge",
       component: imageEnlarge
+    },
+    {
+      path: "/bgParticle",
+      name: "bgParticle",
+      component: bgParticle
     }
   ]
 });

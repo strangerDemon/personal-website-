@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.2.1.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+    //callback 区别 callback.call
+    //callback(i,value[i]);
+    //callback.call(value[i],i,value[i]);
+    //callback this指针为 window
+    //callback.call this指针 为当前对象 ，第一个参数代表指针 
+    let value = [1, 2, 3, 4, 5]
+    function myCallback(obj, callback) {
+        for (i=0,length=obj.length; i < length; i++) {
+            callback(i, obj[i]);
+        }
+    }
+    function myCallbackCall(obj, callback) {
+        for (i=0,length=obj.length; i < length; i++) {
+            callback.call(obj[i],i, obj[i]);
+        }
+    }
+    console.log("myCallback");
+    myCallback(value,function(i,item){
+        console.log(i,item,this);
+    });
+    console.log("myCallbackCall");
+    myCallbackCall(value,function(i,item){
+        console.log(i,item,this);
+    });
+    //
+    var a = " a b c 啊 哦 ";
+    var b = a.trim();
+    console.log(a, b);
+</script>
+
+</html>
