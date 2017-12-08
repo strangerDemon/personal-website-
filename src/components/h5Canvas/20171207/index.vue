@@ -4,8 +4,6 @@
   </div>
 </template>
 <script>
-const width = window.innerWidth;
-const height = window.innerHeight;
 const colorArray = ["#67C23A", "#EB9E05", "#FA5555", "#409EFF", "#878D99"];
 export default {
   name: "bgParticle",
@@ -13,6 +11,8 @@ export default {
   components: {},
   data() {
     return {
+      width: 0,
+      height: 0,
       //活画布笔
       canvas: null,
       context: null,
@@ -47,6 +47,13 @@ export default {
         vm.update();
       }, 1000 / vm.frames);
     },
+    initSide() {
+      let vm = this;
+      vm.width = window.innerWidth;
+      vm.height = window.innerHeight;
+      vm.canvas.width = vm.width;
+      vm.canvas.height = vm.height;
+    },
     create() {
       let vm = this;
       for (let i = 0; i < vm.number; i++) {
@@ -54,11 +61,11 @@ export default {
         particle.radius = Math.random() * vm.maxRadius;
         particle.x = Math.max(
           particle.radius,
-          Math.random() * width - particle.radius
+          Math.random() * vm.width - particle.radius
         );
         particle.y = Math.max(
           particle.radius,
-          Math.random() * height - particle.radius
+          Math.random() * vm.height - particle.radius
         );
         particle.color = colorArray[~~(Math.random() * 5)];
         particle.dx =
@@ -73,33 +80,40 @@ export default {
     },
     update() {
       let vm = this;
-      vm.context.clearRect(0, 0, width, height);
+      vm.context.clearRect(0, 0, vm.width, vm.height);
       for (let i = 0; i < vm.number; i++) {
+        let mouseRadius = vm.particleArray[i].isBig
+          ? vm.particleArray[i].radius
+          : vm.big * vm.particleArray[i].radius;
         if (
-          Math.abs(vm.mouseX - vm.particleArray[i].x) <
-            vm.big*vm.particleArray[i].radius &&
-          Math.abs(vm.mouseY - vm.particleArray[i].y) <
-            vm.big*vm.particleArray[i].radius &&
+          Math.abs(vm.mouseX - vm.particleArray[i].x) < mouseRadius &&
+          Math.abs(vm.mouseY - vm.particleArray[i].y) < mouseRadius &&
           !vm.particleArray[i].isBig
         ) {
           vm.particleArray[i].radius *= vm.big;
           vm.particleArray[i].isBig = true;
-          vm.drawParticle(vm.particleArray[i]);
-          continue;
-        } else if (vm.particleArray[i].isBig) {
+          //vm.drawParticle(vm.particleArray[i]);
+          //continue;
+        } else if (
+          Math.abs(vm.mouseX - vm.particleArray[i].x) >
+            vm.particleArray[i].radius &&
+          Math.abs(vm.mouseY - vm.particleArray[i].y) >
+            vm.particleArray[i].radius &&
+          vm.particleArray[i].isBig
+        ) {
           vm.particleArray[i].radius /= vm.big;
           vm.particleArray[i].isBig = false;
         }
         vm.particleArray[i].x += vm.particleArray[i].dx;
         vm.particleArray[i].y += vm.particleArray[i].dy;
         if (
-          vm.particleArray[i].x > width - vm.particleArray[i].radius ||
+          vm.particleArray[i].x > vm.width - vm.particleArray[i].radius ||
           vm.particleArray[i].x < vm.particleArray[i].radius
         ) {
           vm.particleArray[i].dx = -vm.particleArray[i].dx;
         }
         if (
-          vm.particleArray[i].y > height - vm.particleArray[i].radius ||
+          vm.particleArray[i].y > vm.height - vm.particleArray[i].radius ||
           vm.particleArray[i].y < vm.particleArray[i].radius
         ) {
           vm.particleArray[i].dy = -vm.particleArray[i].dy;
@@ -122,19 +136,23 @@ export default {
       this.mouseY = event.clientY;
     },
     releaseMouse(event) {
-      this.mouseX = -vm.maxRadius;
-      this.mouseY = -vm.maxRadius;
+      let vm = this;
+      vm.mouseX = -vm.maxRadius * vm.big;
+      vm.mouseY = -vm.maxRadius * vm.big;
     }
   },
   beforeCreate() {},
   created() {},
   destroyed() {},
   mounted() {
-    this.canvas = document.getElementById("particles");
-    this.context = this.canvas.getContext("2d");
-    this.canvas.width = width;
-    this.canvas.height = height;
-    this.init();
+    let vm = this;
+    vm.canvas = document.getElementById("particles");
+    vm.context = vm.canvas.getContext("2d");
+    vm.initSide();
+    vm.init();
+    window.onresize = function() {
+      vm.initSide();
+    };
   }
 };
 </script>
