@@ -11,22 +11,27 @@ export default {
   components: {},
   data() {
     return {
+        //system
       width: 0,
       height: 0,
+      SpeedDenominator:50,//速度分母
+      updateTime:10000,//更新时间
       //活画布笔
       canvas: null,
       context: null,
-      //一个实例粒子的对象
+      //用户对象 一个实例粒子的对象
       particle: {
         x: 0,
         y: 0,
-        radius: 0,
-        dx: 0,
-        dy: 0,
-        color: "",
+        radius: 10,
+        dx: 10,
+        dy: 10,
+        color: "#FFFFFF",
         isBig: false
       },
-      number: 1000, //粒子数
+      UserMaxRadius:50,
+      //背景粒子参数
+      number: 100, //粒子数
       maxRadius: 10, //半径范围
       maxSpeed: 10,
       particleArray: [], //粒子数组
@@ -56,6 +61,7 @@ export default {
     },
     create() {
       let vm = this;
+      //背景球
       for (let i = 0; i < vm.number; i++) {
         let particle = new Object();
         particle.radius = Math.random() * vm.maxRadius;
@@ -76,51 +82,70 @@ export default {
         vm.particleArray.push(particle);
         vm.drawParticle(particle);
       }
+      //主体球
+      vm.particle.x = Math.max(
+        vm.particle.radius,
+        Math.random() * vm.width - vm.particle.radius
+      );
+      vm.particle.y = Math.max(
+        vm.particle.radius,
+        Math.random() * vm.height - vm.particle.radius
+      );
       //console.log(vm.particleArray);
     },
     update() {
       let vm = this;
       vm.context.clearRect(0, 0, vm.width, vm.height);
       for (let i = 0; i < vm.number; i++) {
-        let mouseRadius = vm.particleArray[i].isBig
-          ? vm.particleArray[i].radius
-          : vm.big * vm.particleArray[i].radius;
-        if (
-          Math.abs(vm.mouseX - vm.particleArray[i].x) < mouseRadius &&
-          Math.abs(vm.mouseY - vm.particleArray[i].y) < mouseRadius &&
-          !vm.particleArray[i].isBig
-        ) {
-          vm.particleArray[i].radius *= vm.big;
-          vm.particleArray[i].isBig = true;
-          //vm.drawParticle(vm.particleArray[i]);
-          //continue;
-        } else if (
-          Math.abs(vm.mouseX - vm.particleArray[i].x) >
-            vm.particleArray[i].radius &&
-          Math.abs(vm.mouseY - vm.particleArray[i].y) >
-            vm.particleArray[i].radius &&
-          vm.particleArray[i].isBig
-        ) {
-          vm.particleArray[i].radius /= vm.big;
-          vm.particleArray[i].isBig = false;
-        }
-        vm.particleArray[i].x += vm.particleArray[i].dx;
-        vm.particleArray[i].y += vm.particleArray[i].dy;
-        if (
-          vm.particleArray[i].x > vm.width - vm.particleArray[i].radius ||
-          vm.particleArray[i].x < vm.particleArray[i].radius
-        ) {
-          vm.particleArray[i].dx = -vm.particleArray[i].dx;
-        }
-        if (
-          vm.particleArray[i].y > vm.height - vm.particleArray[i].radius ||
-          vm.particleArray[i].y < vm.particleArray[i].radius
-        ) {
-          vm.particleArray[i].dy = -vm.particleArray[i].dy;
-        }
+        vm.particleArray[i] = vm.updatePara(vm.particleArray[i]);
         vm.drawParticle(vm.particleArray[i]);
-        //console.log(i,vm.particleArray[i].x,vm.particleArray[i].y);
       }
+      vm.particle = vm.updatePara(vm.particle);
+      vm.drawParticle(vm.particle);
+    },
+    updatePara(particle) {
+      let vm = this;
+      let mouseRadius = particle.isBig
+        ? particle.radius
+        : vm.big * particle.radius;
+      if (
+        Math.abs(vm.mouseX - particle.x) < mouseRadius &&
+        Math.abs(vm.mouseY - particle.y) < mouseRadius &&
+        !particle.isBig
+      ) {
+        particle.radius *= vm.big;
+        particle.isBig = true;
+      } else if (
+        Math.abs(vm.mouseX - particle.x) > particle.radius &&
+        Math.abs(vm.mouseY - particle.y) > particle.radius &&
+        particle.isBig
+      ) {
+        particle.radius /= vm.big;
+        particle.isBig = false;
+      }
+      particle.x += particle.dx;
+      particle.y += particle.dy;
+      if (
+        particle.x > vm.width - particle.radius ||
+        particle.x < particle.radius
+      ) {
+        particle.dx = -particle.dx;
+      }
+      if (
+        particle.y > vm.height - particle.radius ||
+        particle.y < particle.radius
+      ) {
+        particle.dy = -particle.dy;
+      }
+      return particle;
+    },
+    //x 的球吃了 y的球的半径变化math.sqrt(x*x+y*y)-x，还有一个最大UserMaxRadius的半径
+    eat(){
+
+    },
+    //补充被吃掉的
+    addParticles(){
+
     },
     drawParticle(particle) {
       let vm = this;
@@ -153,6 +178,45 @@ export default {
     window.onresize = function() {
       vm.initSide();
     };
+    //controller
+    window.onkeydown = function(event) {
+      switch (event.code) {
+        case "ArrowUp":
+          vm.particle.dy =
+            vm.particle.y <= vm.particle.radius ? 0 : -Math.abs(vm.SpeedDenominator/vm.particle.radius);
+          vm.particle.dx = 0;
+          break;
+        case "ArrowDown":
+          vm.particle.dy =
+            vm.particle.y >= vm.height - vm.particle.radius
+              ? 0
+              : Math.abs(vm.SpeedDenominator/vm.particle.radius);
+          vm.particle.dx = 0;
+          break;
+        case "ArrowLeft":
+          vm.particle.dx =
+            vm.particle.x <= vm.particle.radius ? 0 : -Math.abs(vm.SpeedDenominator/vm.particle.radius);
+          vm.particle.dy = 0;
+          break;
+        case "ArrowRight":
+          vm.particle.dx =
+            vm.particle.x >= vm.width - vm.particle.radius
+              ? 0
+              : Math.abs(vm.SpeedDenominator/vm.particle.radius);
+          vm.particle.dy = 0;
+          break;
+        case "space":
+          break;
+        default:
+          break;
+      }
+      vm.update();
+    };  
+
+    //定时添加数据
+    setInterval(function(){
+
+    },vm.updateTime);
   }
 };
 </script>
