@@ -27,7 +27,7 @@ export default {
       this.showImageContext.fillRect(x, y, width, height);
     },
     //  图片对象，图片起始位置，截取宽高，canvas 起始位置，显示宽高
-    drawImage(image, x, y, width, hwight, cx, cy, cWidth, cHeight) {
+    drawImage(image, x, y, width, height, cx, cy, cWidth, cHeight) {
       let vm = this;
       //  图片对象，canvas 起始位置,原图显示
       // vm.showImageContext.drawImage(image, cx, cy)
@@ -36,7 +36,7 @@ export default {
       //vm.showImageContext.drawImage(image, cx, cy, cWidth, cHeight)
 
       //  图片对象，图片起始位置，截取宽高，canvas 起始位置，显示宽高
-      //vm.showImageContext.drawImage( image, x, y, width, hwight, cx, cy, cWidth, cHeight);
+      //vm.showImageContext.drawImage( image, x, y, width, height, cx, cy, cWidth, cHeight);
 
       //图片拉伸显示
       vm.showImageContext.drawImage(

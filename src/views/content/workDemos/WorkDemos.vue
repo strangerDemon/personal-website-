@@ -27,6 +27,10 @@ export default {
       }, {
         name: 'heartLoading',
         url: 'heartLoading'
+      }
+      , {
+        name: 'eatBeans',
+        url: 'eatBeans'
       }],
       //加载动画 发牌动画
       col: 5, //列

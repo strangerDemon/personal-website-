@@ -9,7 +9,7 @@ import heartLoading from "@/components/c3Animation/heartLoading/loading";
 // h5 canvas
 import drawImage from "@/components/h5Canvas/drawImage/drawImage";
 import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge";
-import bgParticle from "@/components/h5Canvas/20171207/index.vue";
+import eatBeans from "@/components/h5Canvas/eatBeans/eatBeans.vue";
 
 Vue.use(Router);
 
@@ -54,9 +54,9 @@ export default new Router({
       component: imageEnlarge
     },
     {
-      path: "/bgParticle",
-      name: "bgParticle",
-      component: bgParticle
+      path: "/eatBeans",
+      name: "eatBeans",
+      component: eatBeans
     }
   ]
 });
