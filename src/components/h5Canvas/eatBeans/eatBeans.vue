@@ -1,6 +1,7 @@
 <template>
   <div class="eatBeans"  @mousemove="updateParticle" @mouseover="updateParticle" @mouseout="releaseMouse">
       <canvas id="particles">your browser is not support canvas</canvas>
+      <div class="score">得分：{{score}}</div>
   </div>
 </template>
 <script>
@@ -21,6 +22,8 @@ export default {
       big: 10, //变大倍数
       mouseX: -10,
       mouseY: -10,
+      updateInterval: null,
+      addParticlesInterval: null,
       //活画布笔
       canvas: null,
       context: null,
@@ -35,6 +38,7 @@ export default {
         color: "#FFFFFF",
         isBig: false
       },
+      score: 0,
       //地雷，不动
       mimeArray: [],
       mimeNumber: 10,
@@ -61,9 +65,13 @@ export default {
       vm.image.src = "./static/images/eatBeans.png";
       vm.image.onload = function() {
         vm.create();
-        setInterval(function() {
+        vm.updateInterval = setInterval(function() {
           vm.update();
         }, 1000 / vm.frames);
+        //定时添加数据
+        vm.addParticlesInterval = setInterval(function() {
+          vm.addParticles();
+        }, vm.updateTime);
       };
     },
     initSide() {
@@ -120,16 +128,16 @@ export default {
     create() {
       let vm = this;
       //背景球
-      vm.createParticles();
+      vm.createParticles(vm.particleNumber);
       vm.createMimes();
       vm.createMonsters();
       //主体球
       vm.eater.x = Math.max(0, Math.random() * vm.width - vm.eater.width);
       vm.eater.y = Math.max(0, Math.random() * vm.height - vm.eater.height);
     },
-    createParticles() {
+    createParticles(number) {
       let vm = this;
-      for (let i = 0; i < vm.particleNumber; i++) {
+      for (let i = 0; i < number; i++) {
         let particle = new Object();
         particle.radius = Math.random() * vm.particleMaxRadius;
         particle.x = Math.max(
@@ -193,6 +201,7 @@ export default {
       }
       vm.eater = vm.updateEaterPara(vm.eater);
       vm.drawEat(vm.eater);
+      vm.eat();
     },
     updateParticlePara(particle) {
       let vm = this;
@@ -256,12 +265,77 @@ export default {
       return monster;
     },
     //x 的球吃了 y的球的半径变化math.sqrt(x*x+y*y)-x，还有一个最大UserMaxRadius的半径
-    eat() {},
+    eat() {
+      let vm = this;
+      //当前eater的实际中心点
+      let eatW = vm.eater.width / 2,
+        eatH = vm.eater.height / 2;
+      let x = vm.eater.x + eatW,
+        y = vm.eater.y + eatH;
+      for (let i = 0; i < vm.particleArray.length; ) {
+        let particle = vm.particleArray[i];
+        if (
+          Math.abs(particle.x - x) <= particle.radius + eatW &&
+          Math.abs(particle.y - y) <= particle.radius + eatH
+        ) {
+          vm.particleArray.splice(i, 1);
+          vm.score++;
+          vm.eater.width=Math.sqrt(particle.radius*particle.radius+eatW*eatW*4);
+          vm.eater.height=Math.sqrt(particle.radius*particle.radius+eatH*eatH*4);
+        } else {
+          i++;
+        }
+      }
+      for (let i = 0, length = vm.mimeArray.length; i < length; i++) {
+        if (vm.checkDead(x, y, eatW, eatH, vm.mimeArray[i])) {
+          clearInterval(vm.updateInterval);
+          clearInterval(vm.addParticlesInterval);
+          vm.gameOver();
+        }
+      }
+      for (let i = 0, length = vm.monsterArray.length; i < length; i++) {
+        if (vm.checkDead(x, y, eatW, eatH, vm.monsterArray[i])) {
+          clearInterval(vm.updateInterval);
+          clearInterval(vm.addParticlesInterval);
+          vm.gameOver();
+        }
+      }
+    },
     //补充被吃掉的
-    addParticles() {},
+    addParticles() {
+      let vm = this;
+      vm.createParticles(vm.particleNumber - vm.particleArray.length);
+    },
     //p判断是否gg
-    checkDead(){
-
+    checkDead(x, y, w, h, object) {
+      if (
+        Math.abs(object.x + object.width / 2 - x) <= object.width / 2 + w &&
+        Math.abs(object.y + object.height / 2 - y) <= object.height / 2 + h
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    gameOver() {
+      let vm = this;
+      vm.$alert(vm.score, "得分", {
+        center: true,
+        confirmButtonText: "确定",
+        callback: action => vm.gameStart()
+      });
+    },
+    gameStart() {
+      let vm = this;
+      //清空数据
+      vm.context.clearRect(0, 0, vm.width, vm.height);
+      vm.particleArray = [];
+      vm.mimeArray = [];
+      vm.monsterArray = [];
+      vm.score = 0;
+      vm.eater.width=40;
+      vm.eater.height=44;
+      vm.init();
     },
     /**
      * 绘制
@@ -350,8 +424,6 @@ export default {
       vm.initSide();
     };
     vm.initKeyBoard();
-    //定时添加数据
-    setInterval(function() {}, vm.updateTime);
   }
 };
 </script>
@@ -361,5 +433,15 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+.score {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 150px;
+  height: 50px;
+  background-color: rgba(256, 256, 256, 0.5);
+  font-size: 20px;
+  padding: 10px;
 }
 </style>
