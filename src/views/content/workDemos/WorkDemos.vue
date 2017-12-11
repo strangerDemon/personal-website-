@@ -2,7 +2,7 @@
   <div class="workDemos">
     <el-scrollbar tag="ul" wrap-class="el-autocomplete-suggestion__wrap" view-class="el-autocomplete-suggestion__list">
       <div class="demoDiv" v-for="(demo,index) in demos" :key="index">
-        <iframe class="frame" :src="'/#/'+demo.url" frameborder="0"></iframe>
+        <iframe class="frame" :src="href+demo.url" frameborder="0"></iframe>
         <el-button type="info" class="routerButton" @click="router(demo.name)">{{demo.name}}</el-button>
       </div>
     </el-scrollbar>
@@ -15,6 +15,7 @@ export default {
   components: {},
   data() {
     return {
+      href:location.href,
       demos: [{
         name: 'particles',
         url: 'particles'
@@ -43,7 +44,7 @@ export default {
   watch: {},
   methods: {
     router(path) {
-      window.open(location.origin + "/#/" + path)
+      window.open(this.href + path)
     },
     //每次突发到底部row++
     lazyLoad() {

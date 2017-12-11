@@ -62,7 +62,7 @@ export default {
     init() {
       let vm = this;
       vm.image = new Image();
-      vm.image.src = "./static/images/eatBeans.png";
+      vm.image.src = "../static/images/eatBeans.png";
       vm.image.onload = function() {
         vm.create();
         vm.updateInterval = setInterval(function() {
@@ -280,8 +280,12 @@ export default {
         ) {
           vm.particleArray.splice(i, 1);
           vm.score++;
-          vm.eater.width=Math.sqrt(particle.radius*particle.radius+eatW*eatW*4);
-          vm.eater.height=Math.sqrt(particle.radius*particle.radius+eatH*eatH*4);
+          vm.eater.width = Math.sqrt(
+            particle.radius * particle.radius + eatW * eatW * 4
+          );
+          vm.eater.height = Math.sqrt(
+            particle.radius * particle.radius + eatH * eatH * 4
+          );
         } else {
           i++;
         }
@@ -308,6 +312,7 @@ export default {
     },
     //p判断是否gg
     checkDead(x, y, w, h, object) {
+      if(object==undefined||object==undefined){return false}
       if (
         Math.abs(object.x + object.width / 2 - x) <= object.width / 2 + w &&
         Math.abs(object.y + object.height / 2 - y) <= object.height / 2 + h
@@ -319,6 +324,10 @@ export default {
     },
     gameOver() {
       let vm = this;
+      if (window != top) {
+        vm.gameStart();
+        return;
+      }
       vm.$alert(vm.score, "得分", {
         center: true,
         confirmButtonText: "确定",
@@ -333,8 +342,8 @@ export default {
       vm.mimeArray = [];
       vm.monsterArray = [];
       vm.score = 0;
-      vm.eater.width=40;
-      vm.eater.height=44;
+      vm.eater.width = 40;
+      vm.eater.height = 44;
       vm.init();
     },
     /**

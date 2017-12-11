@@ -18,59 +18,59 @@ const state = {
       images: [
         {
           description: "夕阳", //照片描述
-          imageUrl: "../../../static/images/01.jpg"
+          imageUrl: "../static/images/01.jpg"
         },
         {
           description: "天空", //相册描述
-          imageUrl: "../../../static/images/02.jpg"
+          imageUrl: "../static/images/02.jpg"
         },
         {
           description: "动物城", //相册描述
-          imageUrl: "../../../static/images/03.jpg"
+          imageUrl: "../static/images/03.jpg"
         },
         {
           description: "fox & pig", //相册描述
-          imageUrl: "../../../static/images/04.jpg"
+          imageUrl: "../static/images/04.jpg"
         },
         {
           description: "tom & terry", //相册描述
-          imageUrl: "../../../static/images/05.jpg"
+          imageUrl: "../static/images/05.jpg"
         },
         {
           description: "panda", //相册描述
-          imageUrl: "../../../static/images/06.jpg"
+          imageUrl: "../static/images/06.jpg"
         },
         {
           description: "森林", //相册描述
-          imageUrl: "../../../static/images/07.jpg"
+          imageUrl: "../static/images/07.jpg"
         },
         {
           description: "柯基", //相册描述
-          imageUrl: "../../../static/images/08.jpg"
+          imageUrl: "../static/images/08.jpg"
         },
         {
           description: "动物城", //相册描述
-          imageUrl: "../../../static/images/09.jpg"
+          imageUrl: "../static/images/09.jpg"
         },
         {
           description: "lonely", //相册描述
-          imageUrl: "../../../static/images/10.jpg"
+          imageUrl: "../static/images/10.jpg"
         },
         {
           description: "fox", //相册描述
-          imageUrl: "../../../static/images/11.jpg"
+          imageUrl: "../static/images/11.jpg"
         },
         {
           description: "sky", //相册描述
-          imageUrl: "../../../static/images/12.jpg"
+          imageUrl: "../static/images/12.jpg"
         },
         {
           description: "烈日", //相册描述
-          imageUrl: "../../../static/images/13.jpg"
+          imageUrl: "../static/images/13.jpg"
         },
         {
           description: "swing", //相册描述
-          imageUrl: "../../../static/images/14.jpg"
+          imageUrl: "../static/images/14.jpg"
         }
       ]
     }
