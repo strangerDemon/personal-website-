@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div class="body" @mouseover="flyFollow" @mousedown="fly">
     <div class="fireflyDiv">
       <div class="checkbox-wrap">
         <input class="checkbox" id="checkbox" type="checkbox" />
@@ -30,6 +30,8 @@
   </div>
 </template>
 <script>
+const width = window.innerWidth;
+const height = window.innerHeight;
 export default {
   name: "fireflyDiv",
   directives: {},
@@ -46,8 +48,10 @@ export default {
       directionInterval: null,
       moveInterval: null,
       //firefly Attributes
-      width: 142,
-      height: 53
+      width: 64,
+      height: 32,
+
+      frames: 60 //帧数
     };
   },
   props: {
@@ -62,8 +66,8 @@ export default {
     //对应的fireflyDiv模块位置方向修改
     fly(event) {
       let vm = this;
-      let newTop = event.offsetY,
-        newLeft = event.offsetX; //clientX,clientY 对应屏幕
+      let newTop = event.clientY,
+        newLeft = event.clientX; //clientX,clientY 对应屏幕
       switch (vm.flyType) {
         case "flyAway":
           vm.flyAway(newLeft, newTop);
@@ -77,7 +81,8 @@ export default {
     },
     flyAway(x, y) {},
     flyTo(x, y) {
-      $("#checkbox").attr("checked", true);
+      console.log("x:"+x+" y:"+y);
+      $('#checkbox').prop('checked', true);
       let vm = this;
       clearInterval(vm.directionInterval);
       clearInterval(vm.moveInterval);
@@ -87,55 +92,64 @@ export default {
         180 /
         Math.PI
       ); //角度
+      //console.log("before:"+_direction);
+      if (y < vm.top + vm.height && x < vm.left + vm.width) {
+        _direction= _direction-180;
+      }else if(y > vm.top + vm.height && x < vm.left + vm.width) {
+        _direction= _direction+180;
+      }
+      //console.log("after:"+_direction);
       vm.directionAction(x, y, _speed, _direction);
+    },
+    flyFollow(event) {
+      // this.flyTo(event.clientX,event.clientY)
     },
     directionAction(x, y, _speed, _direction) {
       let vm = this;
       //定时改变角度
       let i = vm.direction;
       vm.directionInterval = setInterval(function() {
-        if (_direction >= 0 && i++ >= _direction) {
+        //原始角度小于现在的角度
+        if (vm.direction<=_direction && i++ >= _direction) {
           clearInterval(vm.directionInterval);
           vm.moveAction(x, y, _speed, _direction);
-        } else if (_direction < 0 && i-- <= _direction) {
+        } else if (vm.direction>=_direction&& i-- <= _direction) {
           clearInterval(vm.directionInterval);
           vm.moveAction(x, y, _speed, _direction);
         } else {
           vm.direction = i;
           $(".fireflyDiv").css("transform", "rotate(" + i + "deg)");
         }
-      }, 20);
+      }, 1000 / vm.frames);
     },
     moveAction(x, y, _speed, _direction) {
       let vm = this;
+      let dy = Math.abs(_speed * Math.sin(2*Math.PI/360*_direction)),
+        dx = Math.abs(_speed * Math.cos(2*Math.PI/360*_direction));
+         //console.log("speed:"+_speed+" _direction:"+_direction+" dx:"+dx+" dy:"+dy);
       vm.moveInterval = setInterval(function() {
         if (y == vm.top + vm.height && x == vm.left + vm.width) {
           clearInterval(vm.moveInterval);
           $("#checkbox").removeAttr("checked");
         } else {
           vm.top =
-            Math.abs(y - vm.top - vm.height) > _speed
-              ? y > vm.top + vm.height ? vm.top + _speed : vm.top - _speed
+            Math.abs(y - vm.top - vm.height) > dy
+              ? y > vm.top + vm.height ? vm.top + dy : vm.top - dy
               : y - vm.height;
           vm.left =
-            Math.abs(x - vm.left - vm.width) > _speed
-              ? x > vm.left + vm.width ? vm.left + _speed : vm.left - _speed
+            Math.abs(x - vm.left - vm.width) > dx
+              ? x > vm.left + vm.width ? vm.left + dx : vm.left - dx
               : x - vm.width;
           $(".fireflyDiv").css("top", vm.top);
           $(".fireflyDiv").css("left", vm.left);
         }
-      }, 20);
+      }, 1000 / vm.frames);
     }
   },
   beforeCreate() {},
   created() {},
   destroyed() {},
-  mounted() {
-    let vm = this;
-    $(".body").on("mousedown", function(event) {
-      vm.fly(event);
-    });
-  }
+  mounted() {}
 };
 </script>
 <style lang="css" scoped>

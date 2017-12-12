@@ -354,6 +354,7 @@ export default {
       vm.context.beginPath(); //提笔
       vm.context.fillStyle = particle.color;
       vm.context.arc(particle.x, particle.y, particle.radius, 0, 2 * Math.PI);
+      //vm.context.closePath();//结束，会 封闭绘制园 ，vm.context.arc(particle.x, particle.y, particle.radius, 0, Math.PI); ，绘制一个封闭的半圆，stroke方法而言，对fill无作用
       vm.context.fill();
     },
     drawEat(particle) {
