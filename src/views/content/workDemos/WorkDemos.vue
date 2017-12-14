@@ -44,7 +44,8 @@ export default {
   watch: {},
   methods: {
     router(path) {
-      window.open(this.href + path)
+       this.$router.push(path)
+      //window.open(this.href + path)
     },
     //每次突发到底部row++
     lazyLoad() {

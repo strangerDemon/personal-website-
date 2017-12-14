@@ -10,6 +10,7 @@ import heartLoading from "@/components/c3Animation/heartLoading/loading";
 import drawImage from "@/components/h5Canvas/drawImage/drawImage";
 import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge";
 import eatBeans from "@/components/h5Canvas/eatBeans/eatBeans.vue";
+import timeBeans from "@/components/h5Canvas/timeBeans/timeBeans.vue"
 // three js
 
 //others
@@ -57,6 +58,11 @@ export default new Router({
       path: "/eatBeans",
       name: "eatBeans",
       component: eatBeans
+    },
+    {
+      path: "/timeBeans",
+      name: "timeBeans",
+      component: timeBeans
     },
     // three js
     //others

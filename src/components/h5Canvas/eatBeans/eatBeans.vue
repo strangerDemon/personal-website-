@@ -362,12 +362,6 @@ export default {
     },
     drawEat(particle) {
       let vm = this;
-      if (vm.isDirection) {
-        console.log(particle.direction);
-        vm.context.save();
-        vm.context.translate(particle.x, particle.y); //设置画布上的(0,0)位置，也就是旋转的中心点
-        vm.context.rotate(particle.direction * Math.PI / 180);
-      }
       vm.context.drawImage(
         vm.image,
         447,
@@ -379,10 +373,6 @@ export default {
         particle.width,
         particle.height
       );
-      if (vm.isDirection) {
-        vm.context.restore(); //恢复状态
-        vm.isDirection = false;
-      }
     },
     drawMime(mime) {
       let vm = this;
