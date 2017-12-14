@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import particles from '../components/particles/particles'
+  import particles from '@/components/others/particles/particles'
   import balloon from '../components/c3Animation/balloon/balloon'
   import mainContent from './MainContent'
   import router from './Router'

@@ -36,8 +36,9 @@ export default {
         dx: 2.5,
         dy: 2.5,
         color: "#FFFFFF",
-        isBig: false
+        direction: 0
       },
+      isDirection: false,
       score: 0,
       //地雷，不动
       mimeArray: [],
@@ -312,7 +313,9 @@ export default {
     },
     //p判断是否gg
     checkDead(x, y, w, h, object) {
-      if(object==undefined||object==undefined){return false}
+      if (object == undefined || object == undefined) {
+        return false;
+      }
       if (
         Math.abs(object.x + object.width / 2 - x) <= object.width / 2 + w &&
         Math.abs(object.y + object.height / 2 - y) <= object.height / 2 + h
@@ -359,6 +362,12 @@ export default {
     },
     drawEat(particle) {
       let vm = this;
+      if (vm.isDirection) {
+        console.log(particle.direction);
+        vm.context.save();
+        vm.context.translate(particle.x, particle.y); //设置画布上的(0,0)位置，也就是旋转的中心点
+        vm.context.rotate(particle.direction * Math.PI / 180);
+      }
       vm.context.drawImage(
         vm.image,
         447,
@@ -370,6 +379,10 @@ export default {
         particle.width,
         particle.height
       );
+      if (vm.isDirection) {
+        vm.context.restore(); //恢复状态
+        vm.isDirection = false;
+      }
     },
     drawMime(mime) {
       let vm = this;
@@ -406,6 +419,15 @@ export default {
       let vm = this;
       this.mouseX = event.clientX;
       this.mouseY = event.clientY;
+
+      vm.isDirection = true;
+      vm.eater.direction = Math.atan(
+        (event.clientY - vm.eater.y) /
+          (event.clientX - vm.eater.x) *
+          180 /
+          Math.PI
+      );
+
       let speed = Math.sqrt(
         vm.eater.dx * vm.eater.dx + vm.eater.dy * vm.eater.dy
       );

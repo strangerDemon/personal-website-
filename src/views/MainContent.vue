@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-  import codeSketch from "../components/code-sketch/codeSketch"
+  import codeSketch from "@/components/others/code-sketch/codeSketch"
   import TopBar from './top/TopBar'
   import CenterContent from './content/CenterContent'
   import BottomBar from './bottom/BottomBar'

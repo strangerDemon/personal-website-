@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-  import photoTransit from '../../../components/photoWall/photoTransit.vue'
+  import photoTransit from '@/components/others/photoWall/photoTransit.vue'
   export default {
     name: "albumPage",
     directives: {},

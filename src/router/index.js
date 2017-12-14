@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Index from "@/views/Index";
-import particles from "@/components/particles/particles";
+
 // css3 animation
 import balloon from "@/components/c3Animation/balloon/balloon";
 import firefly from "@/components/c3Animation/fireFly/firefly";
@@ -10,7 +10,10 @@ import heartLoading from "@/components/c3Animation/heartLoading/loading";
 import drawImage from "@/components/h5Canvas/drawImage/drawImage";
 import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge";
 import eatBeans from "@/components/h5Canvas/eatBeans/eatBeans.vue";
+// three js
 
+//others
+import particles from "@/components/others/particles/particles";
 Vue.use(Router);
 
 export default new Router({
@@ -23,11 +26,7 @@ export default new Router({
       name: "Index",
       component: Index
     },
-    {
-      path: "/particles",
-      name: "particles",
-      component: particles
-    },
+    // css3 animation
     {
       path: "/balloon",
       name: "balloon",
@@ -43,6 +42,7 @@ export default new Router({
       name: "heartLoading",
       component: heartLoading
     },
+    // h5 canvas
     {
       path: "/drawImage",
       name: "drawImage",
@@ -57,6 +57,13 @@ export default new Router({
       path: "/eatBeans",
       name: "eatBeans",
       component: eatBeans
+    },
+    // three js
+    //others
+    {
+      path: "/particles",
+      name: "particles",
+      component: particles
     }
   ]
 });

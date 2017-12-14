@@ -362,7 +362,7 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-    background: url('../../../static/images/a17.png') no-repeat;
+    background: url('../../../../static/images/a17.png') no-repeat;
     overflow: hidden;
   }
 
@@ -435,7 +435,7 @@
     height: 95px;
     border: #000 2px solid;
     box-sizing: content-box;
-    background: url('../../../static/images/t01.png') -800px -800px no-repeat;
+    background: url('../../../../static/images/t01.png') -800px -800px no-repeat;
     _background: none;
   }
 
