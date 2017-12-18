@@ -11,6 +11,7 @@ import drawImage from "@/components/h5Canvas/drawImage/drawImage";
 import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge";
 import eatBeans from "@/components/h5Canvas/eatBeans/eatBeans.vue";
 import timeBeans from "@/components/h5Canvas/timeBeans/timeBeans.vue"
+import snake from "@/components/h5Canvas/snake/snake.vue"
 // three js
 
 //others
@@ -63,6 +64,11 @@ export default new Router({
       path: "/timeBeans",
       name: "timeBeans",
       component: timeBeans
+    },
+    {
+      path: "/snake",
+      name: "snake",
+      component: snake
     },
     // three js
     //others

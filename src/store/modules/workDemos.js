@@ -20,19 +20,25 @@ const state = {
       url: "timeBeans",
       image: "timeBeans.gif",
       date: ""
+    },
+    {
+      name: "snake",
+      url: "snake",
+      image: "",
+      date: "2017-12-18"
     }
   ],
   animationList: [
     {
       name: "particles",
       url: "particles",
-      image: "",
+      image: "particles.gif",
       date: ""
     },
     {
       name: "balloon",
       url: "balloon",
-      image: "",
+      image: "balloon.gif",
       date: ""
     },
     {
@@ -44,7 +50,7 @@ const state = {
     {
       name: "heartLoading",
       url: "heartLoading",
-      image: "",
+      image: "heartLoading.gif",
       date: ""
     }
   ],
