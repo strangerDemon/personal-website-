@@ -4,21 +4,21 @@
       <div class="demosDiv">
         <div class="subtitle">CANVAS: </div>
         <div class="demoDiv" v-for="(demo,index) in canvasList" :key="index">
-          <img class="frame" :src="demo.image"></img>
+          <img class="frame" :src="demo.image==''?url+~~(Math.random()*7+1)+'.jpg':url+demo.image"></img>
           <el-button type="info" class="routerButton" @click="router(demo.name)">{{demo.name}}</el-button>
         </div>
       </div>
       <div class="demosDiv">
         <div class="subtitle">ANIMATION:</div>
         <div class="demoDiv" v-for="(demo,index) in animationList" :key="index">
-          <img class="frame" :src="demo.image"></img>
+          <img class="frame" :src="demo.image==''?url+~~(Math.random()*7+1)+'.jpg':url+demo.image"></img>
           <el-button type="info" class="routerButton" @click="router(demo.name)">{{demo.name}}</el-button>
         </div>
       </div>
       <div class="demosDiv">
         <div class="subtitle">THREE3D:</div>
         <div class="demoDiv" v-for="(demo,index) in threeJsList" :key="index">
-          <img class="frame" :src="demo.image"></img>
+           <img class="frame" :src="demo.image==''?url+~~(Math.random()*7+1)+'.jpg':url+demo.image"></img>
           <el-button type="info" class="routerButton" @click="router(demo.name)">{{demo.name}}</el-button>
         </div>
       </div>
@@ -32,7 +32,7 @@ export default {
   components: {},
   data() {
     return {
-      href: location.href,
+      url: '/static/images/demosCover/',
       demos: [],
       //加载动画 发牌动画
       col: 5, //列
@@ -55,7 +55,6 @@ export default {
   methods: {
     router(path) {
       this.$router.push(path);
-      //window.open(this.href + path)
     },
     //每次突发到底部row++
     lazyLoad() {}

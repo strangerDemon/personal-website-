@@ -12,14 +12,14 @@ const state = {
     {
       name: "eatBeans",
       url: "eatBeans",
-      image: "",
-      type: ""
+      image: "eatBeans.gif",
+      date: ""
     },
     {
       name: "timeBeans",
       url: "timeBeans",
-      image: "",
-      type: ""
+      image: "timeBeans.gif",
+      date: ""
     }
   ],
   animationList: [
@@ -27,25 +27,25 @@ const state = {
       name: "particles",
       url: "particles",
       image: "",
-      type: ""
+      date: ""
     },
     {
       name: "balloon",
       url: "balloon",
       image: "",
-      type: ""
+      date: ""
     },
     {
       name: "firefly",
       url: "firefly",
-      image: "",
-      type: ""
+      image: "firefly.gif",
+      date: ""
     },
     {
       name: "heartLoading",
       url: "heartLoading",
       image: "",
-      type: ""
+      date: ""
     }
   ],
   threeJsList: []
