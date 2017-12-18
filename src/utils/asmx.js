@@ -7,12 +7,7 @@
  * > - [axios和网络传输相关知识的学习实践](http://www.jianshu.com/p/8e5fb763c3d7)
  * > - [Vue.js REST API Consumption with Axios](https://alligator.io/vuejs/rest-api-axios/)
  */
-import {
-  Message
-} from 'element-ui';
-import querystring from 'querystring'
 import axios from 'axios'
-import tokenUtil from './tokenUtil'
 import store from '../store'
 
 const instance = axios.create({
@@ -35,11 +30,7 @@ instance.interceptors.request.use(config => {
   if(!config.data){
     config.data = {}
   }
-  config.data.Token = tokenUtil.token
   config.data.loginSession = store.state.login.loginSession
-  config.data = querystring.stringify({
-    para: JSON.stringify(config.data)
-  })
   return config
 
 }, error => {
@@ -62,22 +53,12 @@ instance.interceptors.response.use(
         return response.data.Results
       }
     } else {
-
-      Message({
-        message: response.data.RespDesc,
-        type: 'warning',
-        duration: 2 * 1000
-      });
+      console.log(response.data.RespDesc);
       return false
     }
   },
   error => {
     console.log('err' + error); // for debug
-    Message({
-      message: error.message,
-      type: 'warning',
-      duration: 3 * 1000
-    });
     return Promise.reject(error);
   }
 )

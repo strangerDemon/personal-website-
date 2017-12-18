@@ -7,7 +7,6 @@ import ElementUI from 'element-ui'
 import plugins from './plugins'
 import store from './store'
 import particles from '../static/js/particles/particles'
-import jssor from '../static/js/jssor.slider.min'
 // ## Import styles
 // =========================
 import 'element-ui/lib/theme-default/index.css'
@@ -18,7 +17,6 @@ import 'element-ui/lib/theme-default/index.css'
 Vue.use(ElementUI)
 Vue.use(plugins)
 Vue.use(particles)
-Vue.use(jssor)
 // ## Config
 // =========================
 Vue.config.debug = true

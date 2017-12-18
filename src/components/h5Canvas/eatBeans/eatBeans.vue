@@ -328,7 +328,7 @@ export default {
     gameOver() {
       let vm = this;
       if (window != top) {
-        vm.gameStart();
+        //vm.gameStart();
         return;
       }
       vm.$alert(vm.score, "得分", {

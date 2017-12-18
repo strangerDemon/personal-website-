@@ -1,6 +1,5 @@
 import systemParam from "./systemParam";
-import systemActionParam from "./systemActionParam";
-import photoParam from "./photoParam";
+import workDemos from "./workDemos";
 import timeBeans from "./timeBeans";
 
-export { systemParam, systemActionParam,photoParam,timeBeans };
+export { systemParam, workDemos,timeBeans };
