@@ -43,7 +43,7 @@ export default {
         vm.drawSnake();
         vm.drawPrey();
         vm.updateSnake();
-      }, 500);
+      }, 200);
     },
     initSnake() {
       let vm = this;
@@ -67,24 +67,23 @@ export default {
     },
     initKeyBoard() {
       let vm = this;
-      let head = vm.snake[0];
       window.onkeydown = function(event) {
         switch (event.code) {
           case "ArrowUp":
-            head.dx = 0;
-            head.dy = -1;
+            vm.snake[0].dx = 0;
+            vm.snake[0].dy = -1;
             break;
           case "ArrowDown":
-            head.dx = 0;
-            head.dy = 1;
+            vm.snake[0].dx = 0;
+            vm.snake[0].dy = 1;
             break;
           case "ArrowLeft":
-            head.dx = -1;
-            head.dy = 0;
+            vm.snake[0].dx = -1;
+            vm.snake[0].dy = 0;
             break;
           case "ArrowRight":
-            head.dx = 1;
-            head.dy = 0;
+            vm.snake[0].dx = 1;
+            vm.snake[0].dy = 0;
             break;
           case "space":
             break;
@@ -95,48 +94,45 @@ export default {
     },
     updateSnake() {
       let vm = this;
-      let last = vm.snake[vm.snake.length - 1];
       for (let i = vm.snake.length - 1; i > 0; i--) {
-        let snake = vm.snake[i];
-        if (vm.isTouchWall(snake)) {
+        if (vm.isTouchWall(vm.snake[i]) || vm.isTouchSelf(vm.snake[i], i)) {
           clearInterval(vm.snakeInterval);
           break;
         }
-        vm.snake[i] = vm.snake[i - 1];
       }
-      if (vm.isTouchWall(vm.snake[0]) || vm.isTouchSelf(snake)) {
-        clearInterval(vm.snakeInterval);
+      let newSnake = new Object();
+      newSnake.x = vm.snake[0].x + vm.snake[0].dx;
+      newSnake.y = vm.snake[0].y + vm.snake[0].dy;
+      newSnake.dx = vm.snake[0].dx;
+      newSnake.dy = vm.snake[0].dy;
+      if (newSnake.x == vm.preyX && newSnake.y == vm.preyY) {
+        vm.eated = true;
+      } else {
+        vm.snake.splice(vm.snake.length - 1, 1);
       }
-      vm.snake[0].x += vm.snake[0].dx;
-      vm.snake[0].y += vm.snake[0].dy;
-      if (vm.snake[0].x == vm.preyX && vm.snake[0].y == vm.preyY) {
-        let newSnake = new Object();
-        newSnake.x = last.x;
-        newSnake.y = last.y;
-        newSnake.dx = last.dx;
-        newSnake.dy = last.dy;
-        vm.snake.push(newSnake);
-        console.log(vm.snake);
-        vm.eated=true;
-      }
+      vm.snake.splice(0, 0, newSnake);
     },
     isTouchWall(snake) {
       let vm = this;
       if (
-        snake.x > vm.cols ||
-        snake.x < 0 ||
-        snake.y < 0 ||
-        snake.y > vm.spans
+        snake.x +snake.dx> vm.cols ||
+        snake.x +snake.dx< 0 ||
+        snake.y +snake.dy< 0 ||
+        snake.y +snake.dy> vm.spans
       ) {
         alert("game over");
         return true;
       }
       return false;
     },
-    isTouchSelf(snake) {
+    isTouchSelf(snake, index) {
       let vm = this;
-      for (let i = 1; i < vm.snake.length; i++) {
-        if (snake.x == vm.snake[i].x && snake.y == vm.snake[i].y) {
+      for (let i = 0; i < vm.snake.length; i++) {
+        if (
+          index != i &&
+          snake.x == vm.snake[i].x &&
+          snake.y == vm.snake[i].y
+        ) {
           return true;
         }
       }
@@ -163,18 +159,9 @@ export default {
     },
     drawSnake() {
       let vm = this;
-      let head = vm.snake[0];
       vm.context.fillStyle = "blue";
-      vm.context.beginPath();
-      vm.context.fillRect(
-        head.x * vm.gridWidth,
-        head.y * vm.gridHeight,
-        vm.gridWidth,
-        vm.gridHeight
-      );
-      vm.context.closePath();
-      vm.context.fillStyle = "green";
-      for (let i = 1, length = vm.snake.length; i < length; i++) {
+      let length = vm.snake.length;
+      for (let i = 0; i < length; i++) {
         let snake = vm.snake[i];
         vm.context.beginPath();
         vm.context.fillRect(
@@ -183,6 +170,7 @@ export default {
           vm.gridWidth,
           vm.gridHeight
         );
+        vm.context.fill();
       }
     },
     drawPrey() {

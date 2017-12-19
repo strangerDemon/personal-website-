@@ -9,3 +9,5 @@ heartLoading:
 ![image](https://github.com/strangerDemon/personal-website-/blob/master/static/images/demosCover/heartLoading.gif)
 balloon:
 ![image](https://github.com/strangerDemon/personal-website-/blob/master/static/images/demosCover/balloon.gif)
+snake:
+![image](https://github.com/strangerDemon/personal-website-/blob/master/static/images/demosCover/snake.gif)
