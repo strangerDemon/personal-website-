@@ -12,6 +12,8 @@ import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge";
 import eatBeans from "@/components/h5Canvas/eatBeans/eatBeans.vue";
 import timeBeans from "@/components/h5Canvas/timeBeans/timeBeans.vue"
 import snake from "@/components/h5Canvas/snake/snake.vue"
+import rectRotate from "@/components/h5Canvas/rectRotate/rectRotate.vue"
+import kaleidoscope from "@/components/h5Canvas/kaleidoscope/kaleidoscope.vue"
 // three js
 
 //others
@@ -69,6 +71,16 @@ export default new Router({
       path: "/snake",
       name: "snake",
       component: snake
+    },
+    {
+      path: "/rectRotate",
+      name: "rectRotate",
+      component: rectRotate
+    },
+    {
+      path: "/kaleidoscope",
+      name: "kaleidoscope",
+      component: kaleidoscope
     },
     // three js
     //others
