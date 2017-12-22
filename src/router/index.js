@@ -14,6 +14,7 @@ import timeBeans from "@/components/h5Canvas/timeBeans/timeBeans.vue"
 import snake from "@/components/h5Canvas/snake/snake.vue"
 import rectRotate from "@/components/h5Canvas/rectRotate/rectRotate.vue"
 import kaleidoscope from "@/components/h5Canvas/kaleidoscope/kaleidoscope.vue"
+import sixStars from "@/components/h5Canvas/sixStars/sixStars.vue"
 // three js
 
 //others
@@ -81,6 +82,11 @@ export default new Router({
       path: "/kaleidoscope",
       name: "kaleidoscope",
       component: kaleidoscope
+    },
+    {
+      path: "/sixStars",
+      name: "sixStars",
+      component: sixStars
     },
     // three js
     //others

@@ -36,9 +36,13 @@ const state = {
       },{
         name: "kaleidoscope",
         url: "kaleidoscope",
-        image: "",
+        image: "kaleidoscope.gif",
         date: "2017-12-21"
-        
+      },{
+        name: "sixStars",
+        url: "sixStars",
+        image: "",
+        date: "2017-12-22"
       }
     ]
   },{
