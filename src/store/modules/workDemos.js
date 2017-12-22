@@ -8,53 +8,72 @@ import store from "@/store";
  * @type {Object}
  */
 const state = {
-  canvasList: [
-    {
-      name: "eatBeans",
-      url: "eatBeans",
-      image: "eatBeans.gif",
-      date: ""
-    },
-    {
-      name: "timeBeans",
-      url: "timeBeans",
-      image: "timeBeans.gif",
-      date: ""
-    },
-    {
-      name: "snake",
-      url: "snake",
-      image: "",
-      date: "2017-12-18"
-    }
-  ],
-  animationList: [
-    {
-      name: "particles",
-      url: "particles",
-      image: "particles.gif",
-      date: ""
-    },
-    {
-      name: "balloon",
-      url: "balloon",
-      image: "balloon.gif",
-      date: ""
-    },
-    {
-      name: "firefly",
-      url: "firefly",
-      image: "firefly.gif",
-      date: ""
-    },
-    {
-      name: "heartLoading",
-      url: "heartLoading",
-      image: "heartLoading.gif",
-      date: ""
-    }
-  ],
-  threeJsList: []
+  dmeoList:[{
+    name:"CANVAS",
+    list:[
+      {
+        name: "eatBeans",
+        url: "eatBeans",
+        image: "eatBeans.gif",
+        date: ""
+      },
+      {
+        name: "timeBeans",
+        url: "timeBeans",
+        image: "timeBeans.gif",
+        date: ""
+      },
+      {
+        name: "snake",
+        url: "snake",
+        image: "snake.gif",
+        date: "2017-12-18"
+      },{
+        name: "rectRotate",
+        url: "rectRotate",
+        image: "",
+        date: "2017-12-19"
+      },{
+        name: "kaleidoscope",
+        url: "kaleidoscope",
+        image: "",
+        date: "2017-12-21"
+        
+      }
+    ]
+  },{
+    name:"ANIMATION",
+    list: [
+      {
+        name: "particles",
+        url: "particles",
+        image: "particles.gif",
+        date: ""
+      },
+      {
+        name: "balloon",
+        url: "balloon",
+        image: "balloon.gif",
+        date: ""
+      },
+      {
+        name: "firefly",
+        url: "firefly",
+        image: "firefly.gif",
+        date: ""
+      },
+      {
+        name: "heartLoading",
+        url: "heartLoading",
+        image: "heartLoading.gif",
+        date: ""
+      }
+    ]
+  },{
+    name:"THREE3D",
+    list: []
+  },]
+  
 };
 
 /**
