@@ -19,3 +19,6 @@ snake:
 
 kaleidoscope:
 ![image](https://github.com/strangerDemon/personal-website-/blob/master/static/images/demosCover/kaleidoscope.gif)
+
+sixStars:
+![image](https://github.com/strangerDemon/personal-website-/blob/master/static/images/demosCover/sixStars.gif)

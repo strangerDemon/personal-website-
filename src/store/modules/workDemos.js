@@ -41,7 +41,7 @@ const state = {
       },{
         name: "sixStars",
         url: "sixStars",
-        image: "",
+        image: "sixStars.gif",
         date: "2017-12-22"
       }
     ]
