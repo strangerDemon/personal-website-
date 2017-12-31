@@ -1,21 +1,43 @@
 /**
  * Created by Administrator on 2017/7/12.
  */
-import { asmx } from "@/utils";
+import {
+  asmx
+} from "@/utils";
 import store from "@/store";
 /**
  * Initial state
  * @type {Object}
  */
 const state = {
-  dmeoList:[{
-    name:"CANVAS",
-    list:[
+  dmeoList: [{
+    name: "CANVAS",
+    list: [{
+        name: "regularPolygons",
+        url: "regularPolygons",
+        image: "regularPolygons.gif",
+        date: "2017-12-31"
+      }, {
+        name: "rectRotate",
+        url: "rectRotate",
+        image: "",
+        date: "2017-12-19"
+      }, {
+        name: "sixStars",
+        url: "sixStars",
+        image: "sixStars.gif",
+        date: "2017-12-22"
+      }, {
+        name: "kaleidoscope",
+        url: "kaleidoscope",
+        image: "kaleidoscope.gif",
+        date: "2017-12-21"
+      },
       {
-        name: "eatBeans",
-        url: "eatBeans",
-        image: "eatBeans.gif",
-        date: ""
+        name: "snake",
+        url: "snake",
+        image: "snake.gif",
+        date: "2017-12-18"
       },
       {
         name: "timeBeans",
@@ -24,31 +46,15 @@ const state = {
         date: ""
       },
       {
-        name: "snake",
-        url: "snake",
-        image: "snake.gif",
-        date: "2017-12-18"
-      },{
-        name: "rectRotate",
-        url: "rectRotate",
-        image: "",
-        date: "2017-12-19"
-      },{
-        name: "kaleidoscope",
-        url: "kaleidoscope",
-        image: "kaleidoscope.gif",
-        date: "2017-12-21"
-      },{
-        name: "sixStars",
-        url: "sixStars",
-        image: "sixStars.gif",
-        date: "2017-12-22"
-      }
+        name: "eatBeans",
+        url: "eatBeans",
+        image: "eatBeans.gif",
+        date: ""
+      },
     ]
-  },{
-    name:"ANIMATION",
-    list: [
-      {
+  }, {
+    name: "ANIMATION",
+    list: [{
         name: "particles",
         url: "particles",
         image: "particles.gif",
@@ -73,11 +79,11 @@ const state = {
         date: ""
       }
     ]
-  },{
-    name:"THREE3D",
+  }, {
+    name: "THREE3D",
     list: []
-  },]
-  
+  }, ]
+
 };
 
 /**

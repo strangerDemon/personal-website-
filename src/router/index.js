@@ -15,6 +15,7 @@ import snake from "@/components/h5Canvas/snake/snake.vue"
 import rectRotate from "@/components/h5Canvas/rectRotate/rectRotate.vue"
 import kaleidoscope from "@/components/h5Canvas/kaleidoscope/kaleidoscope.vue"
 import sixStars from "@/components/h5Canvas/sixStars/sixStars.vue"
+import regularPolygons from "@/components/h5Canvas/regularPolygons/regularPolygons.vue"
 // three js
 
 //others
@@ -87,6 +88,11 @@ export default new Router({
       path: "/sixStars",
       name: "sixStars",
       component: sixStars
+    },
+    {
+      path: "/regularPolygons",
+      name: "regularPolygons",
+      component: regularPolygons
     },
     // three js
     //others
