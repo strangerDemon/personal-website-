@@ -22,3 +22,9 @@ kaleidoscope:
 
 sixStars:
 ![image](https://github.com/strangerDemon/personal-website-/blob/master/static/images/demosCover/sixStars.gif)
+
+regularPolygons:
+![image](https://github.com/strangerDemon/personal-website-/blob/master/static/images/demosCover/regularPolygons.gif)
+
+rectRotate:
+![image](https://github.com/strangerDemon/personal-website-/blob/master/static/images/demosCover/rectRotate.gif)

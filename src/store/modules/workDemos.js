@@ -20,7 +20,7 @@ const state = {
       }, {
         name: "rectRotate",
         url: "rectRotate",
-        image: "",
+        image: "rectRotate.gif",
         date: "2017-12-19"
       }, {
         name: "sixStars",
