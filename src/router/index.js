@@ -16,7 +16,7 @@ import rectRotate from "@/components/h5Canvas/rectRotate/rectRotate.vue"
 import kaleidoscope from "@/components/h5Canvas/kaleidoscope/kaleidoscope.vue"
 import sixStars from "@/components/h5Canvas/sixStars/sixStars.vue"
 // three js
-
+import threeDemo1 from "@/components/three3D/learnDemo/demo1.vue"
 //others
 import particles from "@/components/others/particles/particles";
 Vue.use(Router);
@@ -89,6 +89,11 @@ export default new Router({
       component: sixStars
     },
     // three js
+    {
+      path: "/threeDemo1",
+      name: "threeDemo1",
+      component: threeDemo1
+    },
     //others
     {
       path: "/particles",

@@ -56,14 +56,13 @@ export default {
       vm.iteration(x2, y2, x3, y3, vm.sideLength, vm.number);
       vm.iteration(x3, y3, x1, y1, vm.sideLength, vm.number);
       let g = vm.context.createLinearGradient(0, 0, vm.width, vm.height);
-      g.addColorStop(0.0, "hsla(" + 10 + ",0%,40%,1)");
+      g.addColorStop(0.0, "hsla(" +10+ ",0%,40%,1)");
       g.addColorStop(1, "hsla(" + 10 + ",85%,50%,1)");
       vm.context.strokeStyle = g;
       vm.context.stroke();
       vm.number += vm.update;
       vm.update =
         vm.number > vm.max || vm.number < vm.min ? -vm.update : vm.update;
-      console.log(vm.number, vm.update);
       requestAnimationFrame(vm.loop);
     },
     /**
