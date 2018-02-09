@@ -4,39 +4,48 @@
 </template>
 <script>
   import * as THREE from 'three';
+  import * as TWEEN from "tween";
   export default {
     name: "threeDemo1",
     directives: {},
     components: {},
     data() {
-      return {}
+      return {
+        scene: null,
+        camera: null,
+        group: null,
+        renderer: null,
+        controls: null,
+        dx: 0.05,
+      }
     },
     props: {},
     computed: {},
     watch: {},
     methods: {
       init() {
+        let vm = this
         //创建一个场景（场景是一个容器，用于保存、跟踪所要渲染的物体和使用的光源）
-        var scene = new THREE.Scene();
+        vm.scene = new THREE.Scene();
 
         //创建一个摄像机对象（摄像机决定了能够在场景里看到什么）
-        var camera = new THREE.PerspectiveCamera(45,
+        vm.camera = new THREE.PerspectiveCamera(45,
           window.innerWidth / window.innerHeight, 0.1, 1000);
 
         //设置摄像机的位置，并让其指向场景的中心（0,0,0）//视野角度
-        camera.position.x = 40;
-        camera.position.y = 40;
-        camera.position.z = 40;
-        camera.lookAt(scene.position);
+        vm.camera.position.x = 40;
+        vm.camera.position.y = 40;
+        vm.camera.position.z = 40;
+        vm.camera.lookAt(vm.scene.position);
 
         //创建一个WebGL渲染器并设置其大小
-        var renderer = new THREE.WebGLRenderer();
-        renderer.setClearColor(new THREE.Color(0xaabbcc));
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        vm.renderer = new THREE.WebGLRenderer();
+        vm.renderer.setClearColor(new THREE.Color(0xaabbcc));
+        vm.renderer.setSize(window.innerWidth, window.innerHeight);
 
         //在场景中添加坐标轴 坐标系
         var axes = new THREE.AxisHelper(20);
-        scene.add(axes);
+        vm.scene.add(axes);
 
         //创建一个平面
         var planeGeometry = new THREE.PlaneGeometry(60, 60); //长、宽
@@ -50,7 +59,7 @@
         // plane.position.y = 0;
         // plane.position.z = 0;
         //将平面添加场景中
-        scene.add("plane", plane);
+        vm.scene.add("plane", plane);
 
         //矩形， 长宽高
         //THREE.BoxGeometry(length, width, height)
@@ -70,40 +79,44 @@
         //THREE.SphereGeometry(10, 20, 20); //半径，经度，纬度
         // var sphereGeometry = new THREE.SphereGeometry(10, 20, 20); //半径，经度，纬度
         // //将线框（wireframe）属性设置为true，这样物体就不会被渲染为实物物体
-        // var sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x123456,
-        //   wireframe: true }); //颜色，线框
+        // var sphereMaterial = new THREE.MeshBasicMaterial({
+        //   color: 0x123456,
+        //   wireframe: true
+        // }); //颜色，线框
         // var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
         // //设置球体的位置
         // sphere.position.x = 10;
         // sphere.position.y = 10;
-        // sphere.position.z = 0;
-        // scene.add("sphere", sphere); //将球体添加到场景中
+        // sphere.position.z = 10;
+        // vm.scene.add("sphere", sphere); //将球体添加到场景中
 
-        
+
         //圆柱形 THREE.CylinderGeometry(radiusTop,radiusBottom,height,radiusSegments, heightSegments, openEnded)
         //顶面半径，底面半径，高，分数段竖向(越大越圆)，分数段横向，是否没有顶面和底面
-        // let cylinderGeometry = new THREE.CylinderGeometry(5, 10, 10, 100, 5,
-        //   false);
-        // let cylinderMaterial = new THREE.MeshBasicMaterial({ color: 0x67C23A,
-        //   wireframe: true }); //颜色，线框
-        // let cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
-        // cylinder.position.x=20
-        // cylinder.position.y = 5
-        // cylinder.position.z=20
-        // scene.add("cylinder", cylinder);
-
-        //正四面体 ，radius是半径；detail是细节层次（Level of Detail）的层数
-        /*let tetrahedronGeometry = THREE.TetrahedronGeometry(10)
-        let tetrahedronMaterial = new THREE.MeshBasicMaterial({
+        let cylinderGeometry = new THREE.CylinderGeometry(5, 10, 20, 100, 5,
+          false);
+        let cylinderMaterial = new THREE.MeshBasicMaterial({
           color: 0x409EFF,
           wireframe: true
         }); //颜色，线框
-        let tetrahedron = new THREE.Mesh(tetrahedronGeometry,
-          tetrahedronMaterial);
-        tetrahedron.position.x = 0
-        tetrahedron.position.y = 5
-        tetrahedron.position.z = 0
-        scene.add("tetrahedron", tetrahedron);*/
+        let cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
+        cylinder.position.x = 0
+        cylinder.position.y = 10
+        cylinder.position.z = 0
+        vm.scene.add("cylinder", cylinder);
+
+        //正四面体 ，radius是半径；detail是细节层次（Level of Detail）的层数
+        // let tetrahedronGeometry = THREE.TetrahedronGeometry(10)
+        // let tetrahedronMaterial = new THREE.MeshBasicMaterial({
+        //   color: 0x409EFF,
+        //   wireframe: true
+        // }); //颜色，线框
+        // let tetrahedron = new THREE.Mesh(tetrahedronGeometry,
+        //   tetrahedronMaterial);
+        // tetrahedron.position.x = 0
+        // tetrahedron.position.y = 5
+        // tetrahedron.position.z = 0
+        // vm.scene.add("tetrahedron", tetrahedron);
 
         //正八面体
         /*let octahedronGeometry = THREE.OctahedronGeometry(10)
@@ -116,7 +129,7 @@
         octahedron.position.x = 0
         octahedron.position.y = 5
         octahedron.position.z = 0
-        scene.add("octahedron", octahedron);*/
+        vm.scene.add("octahedron", octahedron);*/
         //20面体
         // THREE.IcosahedronGeometry(radius, detail)
 
@@ -137,20 +150,50 @@
         // torus.position.x = 0
         // torus.position.y = 5
         // torus.position.z = 0
-        // scene.add("torus", torus);
+        // vm.scene.add("torus", torus);
 
         //圆环结 THREE.TorusKnotGeometry(radius,tube,radialSegments,tubularSegments, p, q, heightScale)
         // radius： 圆环半径　
         // tube： 管道半径　
         // radialSegments： 径向的分段数　
         // tubularSegments： 管的分段数　
-        // p： p\ Q: 对knot(节) 状方式有效, 控制曲线路径缠绕的圈数， 其中p决定垂直方向的参数（ 可缺省）　　　　 q： 水平方向的参数（ 可缺省）　　　　
+        // p： p\ Q: 对knot(节) 状方式有效, 控制曲线路径缠绕的圈数， 其中p决定垂直方向的参数（ 可缺省）
+        // q： 水平方向的参数（ 可缺省）　　　　
         //  heightScale： z轴方向上的缩放， 默认值1
+        // let torusKnotGeometry = THREE.TorusKnotGeometry(5, 10,
+        //   5, 5, 1, 1, 1)
+        // let torusKnotMaterial = new THREE.MeshBasicMaterial({
+        //   color: 0x409EFF,
+        //   wireframe: true
+        // });
+        // let torusKnot = new THREE.Mesh(torusKnotGeometry, torusKnotMaterial)
+        // vm.scene.add("torusKnot", torusKnot);
 
         //将渲染的结果输出到指定页面元素中
-        document.getElementById("WebGL-output").appendChild(renderer.domElement);
+        document.getElementById("WebGL-output").appendChild(vm.renderer.domElement);
+        //vm.controller();
         //渲染场景
-        renderer.render(scene, camera);
+        vm.render();
+        vm.animate();
+      },
+      controller() {
+        let vm = this
+        vm.controls = new THREE.TrackballControls(vm.camera, vm.renderer.domElement);
+        vm.controls.minDistance = 200;
+        vm.controls.maxDistance = 500;
+      },
+      animate() {
+        let vm = this
+        requestAnimationFrame(vm.animate);
+        if (vm.scene.position.x > 20 - 2 * vm.dx) vm.dx = -vm.dx
+        vm.scene.position.x = (vm.scene.position.x += vm.dx) % 20
+        vm.scene.position.y = (vm.scene.position.y -= vm.dx) % 20
+        vm.scene.position.z = (vm.scene.position.z -= vm.dx) % 20
+        vm.render();
+      },
+      render() {
+        let vm = this
+        vm.renderer.render(vm.scene, vm.camera);
       }
     },
     beforeCreate() {},
