@@ -6,6 +6,7 @@ import Index from "@/views/Index";
 import balloon from "@/components/c3Animation/balloon/balloon";
 import firefly from "@/components/c3Animation/fireFly/firefly";
 import heartLoading from "@/components/c3Animation/heartLoading/loading";
+import moveCard from "@/components/c3Animation/moveCard/moveCard";
 // h5 canvas
 import drawImage from "@/components/h5Canvas/drawImage/drawImage";
 import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge";
@@ -47,6 +48,11 @@ export default new Router({
       path: "/heartLoading",
       name: "heartLoading",
       component: heartLoading
+    },
+    {
+      path: "/moveCard",
+      name: "moveCard",
+      component: moveCard
     },
     // h5 canvas
     {

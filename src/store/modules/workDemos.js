@@ -77,6 +77,12 @@ const state = {
         url: "heartLoading",
         image: "heartLoading.gif",
         date: ""
+      },
+      {
+        name: "moveCard",
+        url: "moveCard",
+        image: "",
+        date: ""
       }
     ]
   },{
