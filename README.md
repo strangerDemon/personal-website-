@@ -1,4 +1,4 @@
-# personal-website-
+# Demos
 eatBeans:
 ![image](https://github.com/strangerDemon/personal-website-/blob/master/static/images/demosCover/eatBeans.gif)
 
@@ -28,3 +28,6 @@ regularPolygons:
 
 rectRotate:
 ![image](https://github.com/strangerDemon/personal-website-/blob/master/static/images/demosCover/rectRotate.gif)
+
+rainbow:
+![image](https://github.com/strangerDemon/personal-website-/blob/master/static/images/demosCover/rainbow-loading.gif)

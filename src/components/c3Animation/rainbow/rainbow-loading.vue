@@ -7,6 +7,7 @@
     </div>
 </template>
 <script>
+//http://www.jq22.com/code1954
 export default {
   name: "rainbow-loading",
   directives: {},

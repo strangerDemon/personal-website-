@@ -9,6 +9,7 @@ import heartLoading from "@/components/c3Animation/heartLoading/loading";
 import moveCard from "@/components/c3Animation/moveCard/moveCard";
 import rainbow from "@/components/c3Animation/rainbow/rainbow-loading"
 import rainbowRota from "@/components/c3Animation/rainbow/rainbow-rotating"
+import corgis from "@/components/c3Animation/corgis/corgis"
 // h5 canvas
 import drawImage from "@/components/h5Canvas/drawImage/drawImage";
 import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge";
@@ -65,6 +66,11 @@ export default new Router({
       path:"/rainbowRota",
       name:"rainbowRota",
       component:rainbowRota
+    },
+    {
+      path:"/corgis",
+      name:"corgis",
+      component:corgis
     },
     // h5 canvas
     {

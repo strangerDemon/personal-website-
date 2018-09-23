@@ -95,6 +95,12 @@ const state = {
         url: "rainbowRota",
         image: "rainbow-rotating.gif",
         date: "2018-9-23"
+      },
+      {
+        name: "corgis",
+        url: "corgis",
+        image: "",
+        date: "2018-9-23"
       }
     ]
   },{
