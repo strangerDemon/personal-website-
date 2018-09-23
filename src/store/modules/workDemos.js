@@ -83,6 +83,18 @@ const state = {
         url: "moveCard",
         image: "",
         date: ""
+      },
+      {
+        name: "rainbow",
+        url: "rainbow",
+        image: "rainbow-loading.gif",
+        date: "2018-9-23"
+      },
+      {
+        name: "rainbowRota",
+        url: "rainbowRota",
+        image: "rainbow-rotating.gif",
+        date: "2018-9-23"
       }
     ]
   },{

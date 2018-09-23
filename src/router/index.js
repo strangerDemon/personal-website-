@@ -7,6 +7,8 @@ import balloon from "@/components/c3Animation/balloon/balloon";
 import firefly from "@/components/c3Animation/fireFly/firefly";
 import heartLoading from "@/components/c3Animation/heartLoading/loading";
 import moveCard from "@/components/c3Animation/moveCard/moveCard";
+import rainbow from "@/components/c3Animation/rainbow/rainbow-loading"
+import rainbowRota from "@/components/c3Animation/rainbow/rainbow-rotating"
 // h5 canvas
 import drawImage from "@/components/h5Canvas/drawImage/drawImage";
 import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge";
@@ -53,6 +55,16 @@ export default new Router({
       path: "/moveCard",
       name: "moveCard",
       component: moveCard
+    },
+    {
+      path:"/rainbow",
+      name:"rainbow",
+      component:rainbow
+    },
+    {
+      path:"/rainbowRota",
+      name:"rainbowRota",
+      component:rainbowRota
     },
     // h5 canvas
     {

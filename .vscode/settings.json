@@ -6,5 +6,6 @@
     "src\\api\\esriLib\\methods.js",
     "src\\store\\modules\\theme.js",
     "src\\components\\toolMarker.vue"
-  ]
+  ],
+  "git.ignoreLimitWarning": true
 }
