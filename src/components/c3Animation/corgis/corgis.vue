@@ -106,17 +106,37 @@ export default {
       position: absolute;
       width: 100%;
       height: 100%;
+
       .head {
         position: absolute;
-        width: 30%;
+        width: 22%;
         height: 40%;
+        left:10%;
         top: 40%;
         animation: nod 2s infinite;
         background-color: #fff;
-        border-top-right-radius: 45% 50%;
-        border-top-left-radius: 35% 50%;
+        border-top-right-radius: 55% 50%;
+        border-top-left-radius: 40% 50%;
         border-bottom-left-radius: 35% 21%;
         z-index: 6;
+        .ear {
+          position: absolute;
+          height: 60%;
+          width: 30%;
+          top: -40%;
+          border-top-left-radius: 68% 100%;
+          border-top-right-radius: 100% 100%;
+          background-color: #f79e38;
+          z-index: 1;
+        }
+        .left-ear {
+          left: 0%;
+          animation: left-ear-shake 1.5s infinite;
+        }
+        .right-ear {
+          left: 65%;
+          animation: right-ear-shake 1.5s infinite;
+        }
         .eye {
           position: absolute;
           width: 8%;
@@ -154,9 +174,9 @@ export default {
           z-index: 7;
           left: -20%;
           top: 25%;
-          border-bottom-left-radius: 50% 88%;
+          border-bottom-left-radius: 69% 88%;
           border-top-left-radius: 11% 43%;
-          transform: rotate(12deg);
+          transform: rotate(22deg);
         }
         .nose::after {
           position: absolute;
@@ -168,33 +188,15 @@ export default {
           background-color: #000;
           content: "";
         }
-        .ear {
-          position: absolute;
-          height: 60%;
-          width: 30%;
-          top: -40%;
-          border-top-left-radius: 68% 100%;
-          border-top-right-radius: 100% 100%;
-          background-color: #f79e38;
-          z-index:1;
-        }
-        .left-ear {
-          left: 0%;
-          animation: left-ear-shake 1.5s infinite;
-        }
-        .right-ear {
-          left: 65%;
-          animation: right-ear-shake 1.5s infinite;
-        }
       }
       .head::before {
         position: absolute;
-        width: 27%;
-        left: 7%;
-        height: 23%;
+        width: 38%;
+        left: 8%;
+        height: 27%;
         border-top-right-radius: 100% 100%;
-        border-bottom-left-radius: 49% 100%;
-        transform: rotate(-64deg);
+        border-bottom-left-radius: 55% 100%;
+        transform: rotate(-72deg);
         top: -1%;
         border-top-left-radius: 0% -20%;
         border-bottom-right-radius: 52% 0%;
@@ -205,11 +207,11 @@ export default {
       }
       .head::after {
         position: absolute;
-        width: 55%;
+        width: 48%;
         left: 42%;
         top: 0%;
         height: 35%;
-        border-radius: 23% 7% 16% 12%;
+        border-radius: 100% 7% 16% 12%;
         transform: rotate(0deg) scaleX(-1);
         content: "";
         background-color: #f79e38;
@@ -217,9 +219,10 @@ export default {
       }
       .body {
         position: absolute;
-        width: 100%;
-        height: 50%;
-        top: 50%;
+        width: 80%;
+        height: 42%;
+        top: 58%;
+        left:10%;
         z-index: 1;
         background-color: #f79e38;
         /**
@@ -231,8 +234,8 @@ export default {
         border-bottom-left-radius: 30% 40%;
         .mane {
           position: absolute;
-          width: 30%;
-          height: 100%;
+          width: 27%;
+          height: 92%;
           background-color: #fff;
           border-top-right-radius: 17% 40%;
           border-top-left-radius: 25%;
@@ -282,7 +285,7 @@ export default {
         }
         .foot {
           position: absolute;
-          width: 5%;
+          width: 6.5%;
           height: 30%;
           bottom: -28%;
           border-bottom-right-radius: 40% 10%;
@@ -379,39 +382,31 @@ export default {
 }
 
 @keyframes left-ear-shake {
- from {
-    -webkit-transform: rotate(-26deg);
-            transform: rotate(-26deg);
+  from {
+    transform: rotate(-26deg);
   }
   25% {
-    -webkit-transform: rotate(-35deg);
-            transform: rotate(-35deg);
+    transform: rotate(-35deg);
   }
   50% {
-    -webkit-transform: rotate(-26deg);
-            transform: rotate(-26deg);
+    transform: rotate(-26deg);
   }
   to {
-    -webkit-transform: rotate(-40deg);
-            transform: rotate(-40deg);
+    transform: rotate(-40deg);
   }
 }
 @keyframes right-ear-shake {
   from {
-    -webkit-transform: rotate(-331deg);
-            transform: rotate(-331deg);
+    transform: rotate(-331deg);
   }
   25% {
-    -webkit-transform: rotate(-320deg);
-            transform: rotate(-320deg);
+    transform: rotate(-320deg);
   }
   50% {
-    -webkit-transform: rotate(-331deg);
-            transform: rotate(-331deg);
+    transform: rotate(-331deg);
   }
   to {
-    -webkit-transform: rotate(-320deg);
-            transform: rotate(-320deg);
+    transform: rotate(-320deg);
   }
 }
 @keyframes nod {

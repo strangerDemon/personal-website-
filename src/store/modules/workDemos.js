@@ -99,8 +99,14 @@ const state = {
       {
         name: "corgis",
         url: "corgis",
-        image: "",
+        image: "corgis.png",
         date: "2018-9-23"
+      },
+      {
+        name: "christmasTree",
+        url: "christmasTree",
+        image: "",
+        date: "2018-10-1"
       }
     ]
   },{

@@ -10,6 +10,7 @@ import moveCard from "@/components/c3Animation/moveCard/moveCard";
 import rainbow from "@/components/c3Animation/rainbow/rainbow-loading"
 import rainbowRota from "@/components/c3Animation/rainbow/rainbow-rotating"
 import corgis from "@/components/c3Animation/corgis/corgis"
+import christmasTree from "@/components/c3Animation/christmasTree/christmasTree"
 // h5 canvas
 import drawImage from "@/components/h5Canvas/drawImage/drawImage";
 import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge";
@@ -71,6 +72,11 @@ export default new Router({
       path:"/corgis",
       name:"corgis",
       component:corgis
+    },
+    {
+      path:"/christmasTree",
+      name:"christmasTree",
+      component:christmasTree
     },
     // h5 canvas
     {
