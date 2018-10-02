@@ -1,10 +1,18 @@
 <template>
   <div class='christmas-tree'>
     <div class="tree">
-        <div class="star-five"></div>
+        <div class="star">
+            <div class="star-five"></div>
+        </div>
+        <div class="layer-top">&nbsp;</div>
         <div class="tree-layer" v-for="(layer,index) in layers" :key="index">
             <div class="tree-char" v-for="(char,indexC) in layer" :key="indexC" :style="{color:char.color}">
                 {{char.character}}
+            </div>
+        </div>
+        <div class="trunk">
+            <div class="trunk-layer" v-for="(trunk,index) in trunkLayers" :key="index">
+                <div class="trunk-width" :style="{margin:'auto '+ (2*trunk+25)+'px'}"></div>
             </div>
         </div>
     </div>
@@ -97,9 +105,11 @@ export default {
         ">",
         "<"
       ], //字符
+      init: true,
       colorChange: true, //颜色变化
       characterChange: true, //字符变化
-      layerNumber: 20 //层数
+      layerNumber: 20, //层数
+      trunkLayers: 10
     };
   },
   computed: {},
@@ -107,20 +117,38 @@ export default {
   methods: {
     blink() {
       let vm = this;
+      let layers = [...vm.layers];
       vm.layers = [];
       for (let i = 0; i < vm.layerNumber; i++) {
         let length = i * 2 + 1;
         let layer = [];
         for (let j = 0; j < length; j++) {
-          layer.push({
-            color: vm.colors[Math.floor(Math.random() * vm.colors.length)],
-            character:
-              vm.characters[Math.floor(Math.random() * vm.characters.length)]
-          });
+         // if (vm.init) {
+            layer.push({
+              color: vm.colors[Math.floor(Math.random() * vm.colors.length)],
+              character:
+                vm.characters[Math.floor(Math.random() * vm.characters.length)]
+            });
+        //   } else {
+        //     let color = layers[i][j].color;
+        //     let char = layers[i][j].character;
+        //     if (vm.colorChange) {
+        //       color = vm.colors[Math.floor(Math.random() * vm.colors.length)];
+        //     }
+        //     if (vm.characterChange) {
+        //       char =
+        //         vm.characters[Math.floor(Math.random() * vm.characters.length)];
+        //     }
+        //     layer.push({
+        //       color: color,
+        //       character: vm.char
+        //     });
+        //   }
         }
         vm.layers.push(layer);
       }
-      //requestAnimationFrame(vm.blink);
+      vm.init = false;
+      requestAnimationFrame(vm.blink);
     }
   },
   brforeCreate() {},
@@ -144,59 +172,103 @@ export default {
     width: 80%;
     left: 10%;
     top: 10%;
-    text-align:center;
-    .star-five {
+    text-align: center;
+    .star {
       position: relative;
       display: block;
-      width: 0px;
-      height: 0px;
-      margin: 50px 0;
-      color: gold;
-      border-right: 100px solid transparent;
-      border-bottom: 70px solid gold;
-      border-left: 100px solid transparent;
-      -moz-transform: rotate(35deg);
-      -webkit-transform: rotate(35deg);
-      -ms-transform: rotate(35deg);
-      -o-transform: rotate(35deg);
+      margin: 0px auto;
       animation: start-blink 2s infinite;
+      margin-left: 10px;
+      .star-five {
+        position: relative;
+        display: block;
+        width: 0px;
+        height: 0px;
+        color: gold;
+        margin: 20px auto;
+        border-right: 45px solid transparent;
+        border-bottom: 35px solid gold;
+        border-left: 45px solid transparent;
+        transform: rotate(35deg);
+      }
+      .star-five:before {
+        border-bottom: 40px solid gold;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        position: absolute;
+        height: 0;
+        width: 0;
+        top: -22.5px;
+        left: -32.5px;
+        display: block;
+        content: "";
+        transform: rotate(-35deg);
+      }
+      .star-five:after {
+        position: absolute;
+        display: block;
+        color: gold;
+        top: 3px;
+        left: -49.5px;
+        width: 0px;
+        height: 0px;
+        border-right: 45px solid transparent;
+        border-bottom: 35px solid gold;
+        border-left: 45px solid transparent;
+        transform: rotate(-70deg);
+        content: "";
+      }
     }
-    .star-five:before {
-      border-bottom: 80px solid gold;
-      border-left: 30px solid transparent;
-      border-right: 30px solid transparent;
-      position: absolute;
-      height: 0;
-      width: 0;
-      top: -45px;
-      left: -65px;
-      display: block;
-      content: "";
-      -webkit-transform: rotate(-35deg);
-      -moz-transform: rotate(-35deg);
-      -ms-transform: rotate(-35deg);
-      -o-transform: rotate(-35deg);
-    }
-    .star-five:after {
-      position: absolute;
-      display: block;
-      color: gold;
-      top: 3px;
-      left: -105px;
-      width: 0px;
-      height: 0px;
-      border-right: 100px solid transparent;
-      border-bottom: 70px solid gold;
-      border-left: 100px solid transparent;
-      -webkit-transform: rotate(-70deg);
-      -moz-transform: rotate(-70deg);
-      -ms-transform: rotate(-70deg);
-      -o-transform: rotate(-70deg);
-      content: "";
+    .layer-top {
+      display: inline-block;
     }
     .tree-layer {
+      margin: 10px 0px;
       .tree-char {
         display: inline;
+      }
+      .tree-char:first-child {
+        padding-left: 20px;
+      }
+      .tree-char:last-child {
+        padding-right: 10px;
+      }
+    }
+    .layer-top::before,
+    .tree-layer::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 25px;
+      margin-right: 20px;
+      transform: rotate(30deg);
+      border-left: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+    }
+    .layer-top::after,
+    .tree-layer::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 25px;
+      margin-right: 20px;
+      transform: rotate(-30deg);
+      border-right: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+    }
+    .trunk {
+      .trunk-layer {
+        .trunk-width {
+          display: inline;
+        }
+      }
+      .trunk-layer::before {
+        content: "|";
+        color: #8b7765;
+      }
+      .trunk-layer::after {
+        content: "|";
+        color: #8b7765;
       }
     }
   }
@@ -205,10 +277,12 @@ export default {
   from,
   to {
     opacity: 1;
+    transform: rotateY(0deg);
   }
   50%,
   55% {
     opacity: 0;
+    transform: rotateY(180deg);
   }
 }
 </style>
