@@ -105,7 +105,7 @@ const state = {
       {
         name: "christmasTree",
         url: "christmasTree",
-        image: "",
+        image: "christmasTree.png",
         date: "2018-10-1"
       }
     ]

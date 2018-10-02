@@ -16,6 +16,20 @@
             </div>
         </div>
     </div>
+    <div class="params">
+      <di class="param">
+        <div class="title">color</div>:
+        <el-switch v-model="colorChange"></el-switch>
+      </di>
+      <div class="param">
+        <div class="title">character</div>:
+        <el-switch v-model="characterChange"></el-switch>
+      </div>
+      <div class="param">
+        <div class="title">interval</div>:
+        <el-input-number v-model="interval" step="100" :min="0"></el-input-number>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -108,6 +122,7 @@ export default {
       init: true,
       colorChange: true, //颜色变化
       characterChange: true, //字符变化
+      interval: 1000,
       layerNumber: 20, //层数
       trunkLayers: 10
     };
@@ -123,32 +138,34 @@ export default {
         let length = i * 2 + 1;
         let layer = [];
         for (let j = 0; j < length; j++) {
-         // if (vm.init) {
+          if (vm.init) {
             layer.push({
               color: vm.colors[Math.floor(Math.random() * vm.colors.length)],
               character:
                 vm.characters[Math.floor(Math.random() * vm.characters.length)]
             });
-        //   } else {
-        //     let color = layers[i][j].color;
-        //     let char = layers[i][j].character;
-        //     if (vm.colorChange) {
-        //       color = vm.colors[Math.floor(Math.random() * vm.colors.length)];
-        //     }
-        //     if (vm.characterChange) {
-        //       char =
-        //         vm.characters[Math.floor(Math.random() * vm.characters.length)];
-        //     }
-        //     layer.push({
-        //       color: color,
-        //       character: vm.char
-        //     });
-        //   }
+          } else {
+            let color = layers[i][j].color;
+            let char = layers[i][j].character;
+            if (vm.colorChange) {
+              color = vm.colors[Math.floor(Math.random() * vm.colors.length)];
+            }
+            if (vm.characterChange) {
+              char =
+                vm.characters[Math.floor(Math.random() * vm.characters.length)];
+            }
+            layer.push({
+              color: color,
+              character: char
+            });
+          }
         }
         vm.layers.push(layer);
       }
       vm.init = false;
-      requestAnimationFrame(vm.blink);
+      setTimeout(function() {
+        requestAnimationFrame(vm.blink);
+      }, vm.interval);
     }
   },
   brforeCreate() {},
@@ -269,6 +286,25 @@ export default {
       .trunk-layer::after {
         content: "|";
         color: #8b7765;
+      }
+    }
+  }
+  .params{
+    position:absolute;
+    width:300px;
+    height:100%;
+    color:#fff;
+    font-size:16px;
+    .param{
+      position:relative;
+      width:100%;
+      height:50px;
+      line-height: 50px;
+      display:block;
+      margin:10px;
+      .title{
+        width:100px;
+        display: inline-block
       }
     }
   }
