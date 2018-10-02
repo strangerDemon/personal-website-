@@ -51,6 +51,12 @@ const state = {
         image: "eatBeans.gif",
         date: ""
       },
+      {
+        name: "leaf",
+        url: "leaf",
+        image: "",
+        date: "2018-10-2"
+      }
     ]
   }, {
     name: "ANIMATION",
@@ -107,20 +113,24 @@ const state = {
         url: "christmasTree",
         image: "christmasTree.png",
         date: "2018-10-1"
+      },
+      {
+        name: "flag",
+        url: "flag",
+        image: "",
+        date: "2018-10-2"
       }
     ]
-  },{
-    name:"THREE3D",
-    list: [
-      {
-        name: "threeDemo1",
-        url: "threeDemo1",
-        image: "",
-        date: "2018-2-8"
-      },
-    ]
+  }, {
+    name: "THREE3D",
+    list: [{
+      name: "threeDemo1",
+      url: "threeDemo1",
+      image: "",
+      date: "2018-2-8"
+    }, ]
   }]
-  
+
 };
 
 /**

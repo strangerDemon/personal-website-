@@ -11,6 +11,7 @@ import rainbow from "@/components/c3Animation/rainbow/rainbow-loading"
 import rainbowRota from "@/components/c3Animation/rainbow/rainbow-rotating"
 import corgis from "@/components/c3Animation/corgis/corgis"
 import christmasTree from "@/components/c3Animation/christmasTree/christmasTree"
+import flag from "@/components/c3Animation/flag/flag"
 // h5 canvas
 import drawImage from "@/components/h5Canvas/drawImage/drawImage";
 import imageEnlarge from "@/components/h5Canvas/imageEnlarge/imageEnlarge";
@@ -21,6 +22,7 @@ import rectRotate from "@/components/h5Canvas/rectRotate/rectRotate.vue"
 import kaleidoscope from "@/components/h5Canvas/kaleidoscope/kaleidoscope.vue"
 import sixStars from "@/components/h5Canvas/sixStars/sixStars.vue"
 import regularPolygons from "@/components/h5Canvas/regularPolygons/regularPolygons.vue"
+import leaf from "@/components/h5Canvas/leaf/leaf.vue"
 // three js
 import threeDemo1 from "@/components/three3D/learnDemo/demo1.vue"
 //others
@@ -28,8 +30,7 @@ import particles from "@/components/others/particles/particles";
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       // meta: {
       //   requiresAuth: true //是否需要权限
       // },
@@ -59,24 +60,29 @@ export default new Router({
       component: moveCard
     },
     {
-      path:"/rainbow",
-      name:"rainbow",
-      component:rainbow
+      path: "/rainbow",
+      name: "rainbow",
+      component: rainbow
     },
     {
-      path:"/rainbowRota",
-      name:"rainbowRota",
-      component:rainbowRota
+      path: "/rainbowRota",
+      name: "rainbowRota",
+      component: rainbowRota
     },
     {
-      path:"/corgis",
-      name:"corgis",
-      component:corgis
+      path: "/corgis",
+      name: "corgis",
+      component: corgis
     },
     {
-      path:"/christmasTree",
-      name:"christmasTree",
-      component:christmasTree
+      path: "/christmasTree",
+      name: "christmasTree",
+      component: christmasTree
+    },
+    {
+      path: "/flag",
+      name: "flag",
+      component: flag
     },
     // h5 canvas
     {
@@ -123,6 +129,11 @@ export default new Router({
       path: "/regularPolygons",
       name: "regularPolygons",
       component: regularPolygons
+    },
+    {
+      path: "/leaf",
+      name: "leaf",
+      component: leaf
     },
     // three js
     {
