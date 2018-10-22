@@ -1,18 +1,15 @@
 /**
  * Created by Administrator on 2017/7/12.
  */
-import {
-  asmx
-} from "@/utils";
-import store from "@/store";
 /**
  * Initial state
  * @type {Object}
  */
 const state = {
-  dmeoList: [{
+  demoList: [{
     name: "CANVAS",
-    list: [{
+    list: [
+      {
         name: "regularPolygons",
         url: "regularPolygons",
         image: "regularPolygons.gif",
@@ -58,7 +55,8 @@ const state = {
         date: "2018-10-2"
       }
     ]
-  }, {
+  },
+  {
     name: "ANIMATION",
     list: [{
         name: "particles",
@@ -121,16 +119,26 @@ const state = {
         date: "2018-10-2"
       }
     ]
-  }, {
+  },
+  {
     name: "THREE3D",
     list: [{
       name: "threeDemo1",
       url: "threeDemo1",
       image: "",
       date: "2018-2-8"
-    }, ]
-  }]
-
+    } ]
+  },
+  {
+    name: "OTHER",
+    list: [{
+      name: "spongeBob",
+      url: "spongeBob",
+      image: "spongeBob.gif",
+      date: "2018-10-22"
+    }]
+  }
+]
 };
 
 /**

@@ -27,6 +27,7 @@ import leaf from "@/components/h5Canvas/leaf/leaf.vue"
 import threeDemo1 from "@/components/three3D/learnDemo/demo1.vue"
 //others
 import particles from "@/components/others/particles/particles";
+import spongeBob from "@/components/others/mask/spongeBob";
 Vue.use(Router);
 
 export default new Router({
@@ -146,6 +147,11 @@ export default new Router({
       path: "/particles",
       name: "particles",
       component: particles
+    },
+    {
+      path: "/spongeBob",
+      name: "spongeBob",
+      component: spongeBob
     }
   ]
 });

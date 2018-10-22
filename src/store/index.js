@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import axios from 'axios'
-import {
-  asmx
-} from '@/utils'
-import axios from 'axios'
+
 import * as modules from './modules'
 Vue.use(Vuex)
 
