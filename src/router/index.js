@@ -23,6 +23,7 @@ import kaleidoscope from "@/components/h5Canvas/kaleidoscope/kaleidoscope.vue"
 import sixStars from "@/components/h5Canvas/sixStars/sixStars.vue"
 import regularPolygons from "@/components/h5Canvas/regularPolygons/regularPolygons.vue"
 import leaf from "@/components/h5Canvas/leaf/leaf.vue"
+import wave from "@/components/h5Canvas/wave/index.vue"
 // three js
 import threeDemo1 from "@/components/three3D/learnDemo/demo1.vue"
 //others
@@ -135,6 +136,11 @@ export default new Router({
       path: "/leaf",
       name: "leaf",
       component: leaf
+    },
+    {
+      path: "/wave",
+      name: "wave",
+      component: wave
     },
     // three js
     {

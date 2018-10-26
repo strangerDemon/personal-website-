@@ -48,11 +48,17 @@ const state = {
         image: "eatBeans.gif",
         date: ""
       },
+      // {
+      //   name: "leaf",
+      //   url: "leaf",
+      //   image: "",
+      //   date: "2018-10-2"
+      // },
       {
-        name: "leaf",
-        url: "leaf",
+        name: "wave",
+        url: "wave",
         image: "",
-        date: "2018-10-2"
+        date: "2018-10-25"
       }
     ]
   },

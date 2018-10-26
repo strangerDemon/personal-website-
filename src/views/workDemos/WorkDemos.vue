@@ -117,7 +117,7 @@ export default {
     .ears {
       position: relative;
       font-size: 50px;
-      padding-top: 300px;
+      padding-top: 250px;
       z-index: 9999;
     }
     .left {
